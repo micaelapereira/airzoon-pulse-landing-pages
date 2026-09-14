@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="pulse-offer-pages/assets/airzoon-pin-mark.png">
 <title>airZoon Pulse — Landing pages</title>
 <style>
   :root{
@@ -15,7 +16,9 @@
     margin:0; background: var(--surface-0); color: var(--text-primary);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
-  main{ max-width: 720px; margin: 0 auto; padding: 48px 24px 96px; }
+  .page-header{ display:flex; align-items:center; padding: 28px 40px 0; max-width: 720px; margin:0 auto; }
+  .brand-logo{ height:64px; width:auto; display:block; }
+  main{ max-width: 720px; margin: 0 auto; padding: 32px 24px 96px; }
   h1{ font-size: clamp(24px, 3vw, 30px); font-weight:700; margin:0 0 10px; }
   main > p{ font-size:14.5px; color: var(--text-secondary); line-height:1.6; margin:0 0 32px; }
   .list{ display:flex; flex-direction:column; gap:12px; }
@@ -32,6 +35,9 @@
 </style>
 </head>
 <body>
+  <header class="page-header">
+    <img class="brand-logo" src="pulse-offer-pages/assets/airzoon-logo.png" alt="airZoon">
+  </header>
   <main>
     <h1>Pulse — Landing pages</h1>
     <p>5 destination-page archetypes for airZoon Pulse campaigns, one per stage. Built one at a time.</p>
