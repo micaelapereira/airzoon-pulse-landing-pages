@@ -1,0 +1,345 @@
+/* ==========================================================================
+   airZoon Pulse — transversal components
+   Cupón airZoon de conexión + Botón de conexión con el anunciante, copiados
+   1:1 de transversal-components.html (ya diseñados y aprobados — no se
+   rediseñan acá). Separado de tokens.css a propósito: tokens.css es el tema
+   por cliente, esto es identidad/estructura fija de Pulse, igual en los 5
+   arquetipos y en todos los clientes. Se importa en cada variante.
+   ========================================================================== */
+
+/* ---- Separación entre la card de oferta (del comercio) y todo lo que
+   sigue (cupón airZoon, botón de conexión): son identidades distintas —
+   una es del cliente, la otra es de airZoon — así que necesitan más aire
+   que el ritmo estándar de .az-cell (20px) para no leerse como "más
+   contenido" de la misma card. Dos clases le gana en especificidad al
+   .az-cell:first-child de tokens.css sin tocar ese archivo.
+   margin-bottom va por el mismo valor: el margen de abajo colapsa con el
+   margin-top del cell que sigue (16-20px), así que sin esto el aire de
+   arriba del cupón (32px) quedaba visiblemente más grande que el de
+   abajo — ahora los dos lados quedan simétricos sea cual sea el bloque
+   que venga después (conexión, Sobre nosotros, o el cierre de la card). ---- */
+.az-cell.az-cell--coupon{ margin-top: 32px; margin-bottom: 32px; }
+
+/* ---- Cupón airZoon (usa --primary-color: lo entrega el comercio, así
+   que tiene que sentirse parte de su marca, no de una identidad roja fija
+   de airZoon — decisión revisada, el brief original lo pedía no temizable
+   pero el cupón es algo que el negocio le da a su cliente, no un sello de
+   airZoon puro). Copy, ícono y comportamiento siguen fijos e iguales en
+   todos los clientes — lo único que cambia por marca es el color.
+   Shell visual: NO es una card blanca con bordes redondeados genérica —
+   eso desentona con el resto de la página (100 Montaditos usa
+   --block-border-radius:0 en la card de oferta y en "Sobre nosotros"; una
+   card redondeada al lado se lee como un componente de otro sistema).
+   En cambio reusa 1:1 los dos tratamientos "incentivo" ya diseñados y
+   aprobados para las Campaign Pages (Note / Duotone) — mismo código,
+   copy y comportamiento del cupón (icono, código, botón copiar), solo
+   cambia el shell. Toggle en vivo vía [data-incentive-style] en
+   .splash-page-container para comparar ambas; "Note" es la base (sin
+   atributo), "Duotone" pisa por atributo — así no queda un tercer look
+   "redondeado" de respaldo sin usar. */
+/* .az-coupon tiene 2 hijos directos: .az-coupon-icon y .az-coupon-body
+   (que a su vez contiene .az-coupon-top y .az-coupon-code-row apilados).
+   El ícono es hermano de .az-coupon-body, no está anidado adentro.
+   Base = Note: mismo layout que el incentive-card original — columna,
+   ícono ARRIBA del título (no al costado), suelto sobre el fondo tinturado
+   de la card, sin caja de color. Duotone pisa a flex-direction:row con
+   stretch para la franja lateral (ver override abajo). */
+.az-coupon{
+  display:flex; flex-direction:column; align-items:flex-start;
+  background: var(--surface-muted);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  transform: rotate(-1.4deg);
+  padding: 20px 22px 22px;
+}
+.az-coupon-icon{
+  width:24px; height:24px; flex-shrink:0; margin-bottom:10px;
+  display:flex; align-items:center; justify-content:center;
+  color: var(--primary-color);
+}
+.az-coupon-icon svg{ width:24px; height:24px; }
+.az-coupon-body{ width:100%; font-family: var(--font-body); }
+.az-coupon-top{ padding-bottom:16px; }
+.az-coupon-title{
+  font-size:15px; font-weight:700; color: var(--headline-color);
+  font-family: var(--headline-font-family); margin:0 0 4px;
+}
+.az-coupon-desc{ font-size:13.5px; line-height:1.5; color: var(--text-muted); margin:0; }
+.az-coupon-desc strong{ color: var(--text-color); font-weight:600; }
+
+.az-coupon-code-row{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding-top:14px;
+  border-top: 1px dashed color-mix(in srgb, var(--primary-color) 30%, var(--border));
+}
+.az-coupon-code-label{ font-family: var(--font-body); }
+.az-coupon-code-eyebrow{ font-size:9.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color: var(--text-muted); margin:0 0 1px; }
+.az-coupon-code{ font-family: 'SF Mono', 'Courier New', monospace; font-size:14px; font-weight:700; letter-spacing:.03em; color:#2A2A2A; }
+.az-coupon-copy-btn{
+  appearance:none; cursor:pointer; flex-shrink:0;
+  font-family: var(--font-body); font-size:11.5px; font-weight:700;
+  padding:8px 13px; border-radius:999px;
+  border: 1.5px solid var(--primary-color); background:#fff; color: var(--primary-color);
+}
+.az-coupon-copy-btn:active{ background: var(--primary-color); color:#fff; }
+
+/* ---- Duotone override — franja de color sólida (icono) + bloque plano
+   #F9FAFB, sin radio ni sombra ni rotación: la otra opción ya validada,
+   más gráfica/afiche que "Note".
+   flex-direction:row + align-items:stretch (pisa la columna de Note) hace
+   que .az-coupon-icon ocupe la altura completa de .az-coupon-body —
+   título, descripción Y la fila de código quedan todos dentro de la
+   franja, no solo las primeras dos líneas.
+   padding:0 12px en el ícono es del original 1:1 (.incentive-icon-wrap):
+   sin ese padding el cuadrado se ve más angosto/finito de lo que debería
+   — el padding es lo que le da cuerpo al ícono dentro de la franja, el
+   ancho total (64px) no alcanza solo. ---- */
+[data-incentive-style="duotone"] .az-coupon{
+  flex-direction:row; align-items:stretch; gap:0;
+  transform:none; box-shadow:none; background:#F9FAFB; padding:0;
+}
+[data-incentive-style="duotone"] .az-coupon-icon{
+  width:64px; height:auto; margin:0; padding:0 12px; box-sizing:border-box;
+  background: var(--primary-color); color:#fff;
+}
+[data-incentive-style="duotone"] .az-coupon-icon svg{ width:26px; height:26px; }
+[data-incentive-style="duotone"] .az-coupon-body{ width:auto; flex:1; min-width:0; }
+[data-incentive-style="duotone"] .az-coupon-top{
+  padding:14px 18px 10px;
+}
+[data-incentive-style="duotone"] .az-coupon-code-row{
+  border-top:1px solid var(--border);
+  padding:10px 18px 14px;
+}
+
+/* ---- Botón de conexión con el anunciante ----
+   Dónde vive, y por qué: NO en el panel "después de validar" — ese lugar
+   tenía dos problemas de fricción real (detectados en revisión, no un
+   detalle visual):
+   1) Para la oferta tipo WhatsApp, reclamar YA implica abrir un chat con
+      el negocio — ofrecer "Hablar con [Negocio]" otra vez después es
+      redundante, el canal ya está abierto.
+   2) Para la oferta tipo Código, el canje es físico (se muestra el
+      código en el local) — esa persona nunca llega a ver un "después de
+      validar" en esta página, así que un bloque escondido ahí nunca se
+      ve.
+   Por eso el bloque vive DENTRO de [data-offer-panel="code"], pegado al
+   final de la oferta (después del link de términos) — el único momento
+   en el que de verdad hace falta un canal de contacto alternativo, y el
+   único que la persona realmente va a ver. No se duplica para WhatsApp.
+   El ícono de WhatsApp no lleva su verde fijo en ningún estilo — toma
+   currentColor, así se integra con el accent en vez de leerse como un
+   sticker importado. 3 tratamientos vía [data-connect-style]:
+   Tint   — fila horizontal, botón outline, regla vertical junto al texto.
+   Stripe — apilado y centrado, franja de accent en todo el borde
+            izquierdo del propio bloque, botón relleno.
+   Ghost  — fila horizontal, recuadro propio con stroke (sin relleno),
+            botón relleno. ---- */
+/* margin-top/bottom grandes a propósito: el bloque tiene que respirar
+   separado tanto del link de términos arriba como del borde inferior de
+   la card abajo — si no, se lee como "más contenido" pegado al final en
+   vez de un bloque distinto. Mismos valores generosos que tenía cuando
+   vivía en el panel "after". */
+.connect-block{ margin-top: 64px; margin-bottom: 24px; }
+
+.connect-card{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.connect-card-copy{ min-width:0; }
+.connect-card-title{
+  font-size:14px; font-weight:700; color: var(--text-color);
+  font-family: var(--headline-font-family); margin:0 0 2px;
+}
+.connect-card-desc{ font-size:12.5px; color: var(--text-muted); margin:0; }
+.connect-card-btn{
+  display:flex; align-items:center; gap:8px; flex-shrink:0;
+  font-family: var(--font-body); font-size:13.5px; font-weight:700;
+  padding:10px 18px; border-radius:999px; text-decoration:none; white-space:nowrap;
+  background: var(--primary-color); color:#fff; border: 1.5px solid var(--primary-color);
+}
+.connect-card-btn svg{ width:18px; height:18px; flex-shrink:0; color:currentColor; }
+
+/* ---- Mobile angosto: Tint y Ghost son fila (texto + botón lado a
+   lado) — en una pantalla chica eso aprieta el texto contra el botón y
+   lo hace envolver en 3-4 líneas. Se apila: botón abajo, más chico y
+   proporcionado (no ancho completo — un botón que ocupa todo el ancho
+   se ve pesado apilado bajo dos líneas de texto). Stripe ya es columna
+   por su cuenta (selector más específico, gana igual sin tocarlo acá). ---- */
+@media (max-width: 480px){
+  .connect-card{ flex-direction:column; align-items:flex-start; gap:14px; }
+  .connect-card-btn{ padding:8px 16px; font-size:13px; }
+}
+
+/* ---- Tint (base) — fila horizontal, botón outline, con una regla
+   vertical junto al texto que sobrepasa en alto al título+descripción
+   (no queda recortada exactamente a su altura — si no, se lee como un
+   simple "border" en vez de un acento decorativo). Este acento vivía
+   antes en Ghost por error; le corresponde a Tint. ---- */
+[data-connect-style="tint"] .connect-card-btn{
+  background:#fff; color: var(--primary-color);
+}
+[data-connect-style="tint"] .connect-card-copy{
+  border-left: 3px solid var(--primary-color); padding: 6px 0 6px 12px;
+}
+
+/* Tint en mobile apilado: la franja lateral tiene que cubrir texto +
+   botón como un solo bloque, no solo el texto — si no, el botón queda
+   suelto por fuera del acento y el conjunto no se lee como una unidad.
+   Se mueve la franja de .connect-card-copy a .connect-card entero. Va
+   DESPUÉS de la regla base de Tint a propósito — misma especificidad,
+   necesita ganar por orden en la cascada. */
+@media (max-width: 480px){
+  [data-connect-style="tint"] .connect-card{
+    border-left: 3px solid var(--primary-color); padding: 6px 0 6px 12px;
+  }
+  [data-connect-style="tint"] .connect-card-copy{
+    border-left:none; padding:0;
+  }
+}
+
+/* ---- Stripe — apilado y centrado; la franja corre por toda la altura
+   del propio bloque de conexión (ya no comparte card con un mensaje de
+   confirmación, así que no hace falta escalar la franja a nada más). ---- */
+[data-connect-style="stripe"] .connect-block{ position:relative; padding-left:18px; }
+[data-connect-style="stripe"] .connect-block::before{
+  content:""; position:absolute; top:0; bottom:0; left:0; width:4px;
+  background: var(--primary-color);
+}
+[data-connect-style="stripe"] .connect-card{
+  flex-direction:column; align-items:center; text-align:center; gap:16px;
+}
+
+/* ---- Ghost — su identidad real: la card exterior (confirmación) se
+   queda blanca, es solo la FILA de conexión la que tiene su propio
+   recuadro con stroke — sin relleno propio (se ve el blanco de la card de
+   atrás), esquinas redondeadas, padding generoso. No es la card entera
+   la que pierde el fondo (eso fue una sobrecorrección de la vuelta
+   anterior) — es un recuadro anidado, la misma idea que ya existía antes
+   del merge, ahora metida adentro del panel "after" en vez de ser su
+   propia az-cell. ---- */
+[data-connect-style="ghost"] .connect-card{
+  background:none; border: 1.5px solid var(--primary-color);
+  border-radius: var(--element-border-radius);
+  padding: 20px 22px;
+}
+
+[data-connect="off"] .connect-block{ display:none; }
+[data-connect="on"] .connect-block{ display:block; }
+
+/* ---- Paneles: antes / después de validar / oferta caducada ----
+   data-flow-state y data-offer-status viven ambos en .splash-page-container.
+   "Caducada" pisa a los otros dos: si la oferta venció, no importa si el
+   flujo está antes o después, se muestra un único mensaje de cierre. */
+[data-panel]{ display:none; }
+.splash-page-container[data-offer-status="active"][data-flow-state="before"] [data-panel="before"]{ display:block; }
+.splash-page-container[data-offer-status="active"][data-flow-state="after"] [data-panel="after"]{ display:block; }
+.splash-page-container[data-offer-status="expired"] [data-panel="expired"]{ display:block; }
+
+.confirm-title{ font-size:26px; margin:20px 0 14px; }
+.confirm-desc{ font-size:15px; line-height:1.55; color: var(--text-color); margin:0 0 6px; }
+
+[data-panel="expired"]{ text-align:center; }
+.offer-expired-eyebrow{ font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color: var(--text-muted); margin:0 0 8px; }
+.offer-expired-title{ font-size:26px; margin:0 0 10px; }
+.offer-expired-desc{ font-size:15px; line-height:1.55; color: var(--text-muted); margin:0; }
+
+/* ==========================================================================
+   Cuenta atrás horaria — usada por la variante "Countdown" de Página Oferta
+   y reutilizable más adelante en Página Sorteo (cuenta atrás hasta el
+   cierre). Reemplaza a .offer-expiry cuando la campaña la activa: mismo
+   lugar en el layout, un escalón de énfasis arriba porque es la pieza de
+   información que hay que leer en <3s junto con la ventaja.
+   ========================================================================== */
+.offer-countdown{ margin-top:16px; text-align:center; }
+.offer-countdown-label{
+  font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  color: var(--text-muted); margin:0 0 8px;
+}
+.offer-countdown-timer{ display:flex; justify-content:center; gap:8px; }
+.offer-countdown-unit{
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  background: var(--surface-muted); border-radius: var(--element-border-radius);
+  padding:8px 4px; min-width:60px;
+}
+.offer-countdown-unit span{
+  font-size:21px; font-weight:800; color: var(--headline-color);
+  font-variant-numeric: tabular-nums; line-height:1;
+}
+.offer-countdown-unit small{
+  font-size:9.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Bloque "Sobre nosotros" — usado por la variante "Business Intro" de
+   Página Oferta, para quien no conoce el comercio (primera visita). NO es
+   un componente nuevo: es el mismo bloque "Sobre nosotros" ya construido
+   en la splash page de Spot (título editable + párrafo editable + galería
+   de fotos/video estilo Pinterest) — se reutiliza tal cual para que Pulse
+   y Spot compartan el mismo componente de contenido, en vez de inventar
+   una versión más chica solo para acá. Card secundaria, debajo de la card
+   de oferta, mismo sistema de tokens.
+   ========================================================================== */
+.az-cell--intro{ margin-top: 16px; }
+.intro-title{
+  font-size:19px; margin: 0 0 8px;
+}
+.intro-desc{
+  font-size:14px; line-height:1.55; color: var(--text-color); margin:0 0 16px;
+}
+
+/* Masonry estilo Pinterest vía CSS columns — cada tile puede tener su
+   propio aspect-ratio (seteado inline por tile) para variar de alto sin
+   depender de fotos con proporciones naturalmente distintas. */
+.intro-gallery{ columns: 3; column-gap: 8px; }
+.intro-gallery-item{
+  break-inside: avoid; margin-bottom: 8px;
+  border-radius: var(--element-border-radius); overflow:hidden;
+  position:relative; background: var(--surface-muted);
+}
+.intro-gallery-item img{ width:100%; height:100%; display:block; object-fit:cover; }
+.intro-gallery-item.is-video::before{
+  content:""; position:absolute; inset:0; background: rgba(0,0,0,.12);
+}
+.intro-play{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:38px; height:38px; border-radius:50%; background: rgba(255,255,255,.92);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+}
+.intro-play svg{ width:15px; height:15px; margin-left:2px; color: var(--primary-color); }
+
+@media (max-width: 480px){
+  .intro-gallery{ columns: 2; }
+}
+
+/* ==========================================================================
+   Dirección + mapa + horario — card de cierre, siempre visible (mismo
+   criterio que el cupón: no depende del flujo de validación — alguien que
+   ya reclamó la oferta también necesita saber a dónde ir a canjearla).
+   Card propia (mismo patrón que "Sobre nosotros"), no un footer metido
+   dentro de la card de oferta.
+   Sin mapa embebido a propósito: 100 Montaditos tiene más de un local
+   (ver .location-item, repetible), y un iframe de Google Maps solo puede
+   centrarse en un punto — meter uno por local duplica peso de página por
+   cada sucursal que el comercio tenga. En cambio cada local lleva su
+   propio link "Cómo llegar" que abre el mapa real (Maps app en mobile,
+   Google Maps en desktop) — más liviano, y escala a cualquier cantidad de
+   locales sin agregar requests. Reusable tal cual en Reserva y
+   Corporativa, que piden el mismo bloque. ========================================================================== */
+.az-cell--location{ margin-top: 16px; }
+.location-title{ font-size:16px; font-weight:700; color: var(--headline-color); margin:0 0 14px; }
+
+.location-item{ display:flex; align-items:flex-start; gap:10px; }
+.location-item + .location-item{ margin-top:14px; }
+.location-item svg{ width:18px; height:18px; flex-shrink:0; margin-top:2px; color: var(--primary-color); }
+.location-name{ font-size:14px; font-weight:700; color: var(--text-color); margin:0 0 2px; }
+.location-phone{ display:block; font-size:13px; color: var(--text-muted); text-decoration:none; margin-bottom:4px; }
+.location-phone:hover{ text-decoration:underline; }
+.location-link{ font-size:12.5px; font-weight:700; color: var(--primary-color); text-decoration:none; }
+
+.location-hours-row{
+  display:flex; align-items:flex-start; gap:10px;
+  padding-top:14px; margin-top:14px; border-top: 1px solid var(--border);
+}
+.location-hours-row svg{ width:18px; height:18px; flex-shrink:0; margin-top:2px; color: var(--primary-color); }
+.location-hours{ font-size:14px; color: var(--text-color); margin:0; line-height:1.4; }
