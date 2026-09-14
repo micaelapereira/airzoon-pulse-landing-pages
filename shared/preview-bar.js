@@ -84,12 +84,37 @@
     });
   }
 
+  /* The code offer is redeemed in person — a real visitor never returns to
+     this page in an "after claiming" state, so that combination is blocked
+     in the preview instead of showing a screen nobody will ever see. */
+  function wireCodeAfterGuard(container){
+    var offerButtons = document.querySelectorAll(".preview-bar [data-offer-type]");
+    var afterButton = document.querySelector('.preview-bar [data-flow-state="after"]');
+    var beforeButton = document.querySelector('.preview-bar [data-flow-state="before"]');
+    if (!afterButton || !beforeButton) return;
+
+    function sync(){
+      var isCode = container && container.getAttribute("data-offer-type") === "code";
+      afterButton.disabled = isCode;
+      if (isCode && afterButton.getAttribute("aria-pressed") === "true") {
+        beforeButton.click();
+      }
+    }
+
+    offerButtons.forEach(function(btn){
+      btn.addEventListener("click", sync);
+    });
+    sync();
+  }
+
   function init(){
     var container = document.querySelector(".splash-page-container");
 
     TOGGLE_ATTRS.forEach(function(attr){
       wireToggleGroup(container, attr);
     });
+
+    wireCodeAfterGuard(container);
 
     var nav = document.getElementById("variant-nav");
     if (nav) {

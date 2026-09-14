@@ -87,6 +87,9 @@ img{ max-width:100%; display:block; }
 .preview-bar button[aria-pressed="true"]{
   background: var(--primary-color); border-color: var(--primary-color); color:#fff;
 }
+.preview-bar button:disabled{
+  opacity:.4; cursor:not-allowed; background: var(--surface-muted); border-color: var(--border); color: var(--text-muted);
+}
 .preview-bar .spacer{ flex:1; }
 .preview-bar .note{ font-size:11px; color:var(--text-muted); }
 
