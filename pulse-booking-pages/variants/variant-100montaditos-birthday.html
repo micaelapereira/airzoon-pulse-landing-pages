@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>airZoon — Booking Page · 100 Montaditos (Birthday)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css?v=2">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=23">
+<style>
+  /* ---- Cumpleaños — mismo shell y tokens que Página Oferta (100
+     Montaditos), reusados tal cual. La diferencia es de contenido: saludo
+     con nombre, regalo de cumpleaños en vez de oferta genérica, mención de
+     acompañante, vigencia de todo el mes. Una sola acción — reservar por
+     WhatsApp — así que no hay panel de código ni bloque de conexión: ese
+     mismo canal ya lo cubre el botón principal. */
+  :root{
+    --text-color: #232323;
+    --primary-color: #CD0A09;
+    --headline-color: #1A1A1A;
+    --headline-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --card-background-color: #FFFFFF;
+    --block-border-radius: 0px;
+    --element-border-radius: 10px;
+
+    --cta-button-bg: #CD0A09;
+    --cta-button-radius: 10px;
+    --cta-button-font-weight: 700;
+
+    --surface-muted: #F7F3ED;
+    --border: #EAE5DC;
+    --text-muted: #746F68;
+
+    --hero-h: 560px;
+    --badge-d: 160px;
+    --card-overlap: 80px;
+    --card-pad-top: 96px;
+  }
+
+  body{
+    background: #1B1A18 url('../assets/background-100-montaditos.jpg') top center / cover no-repeat fixed;
+  }
+  .az-powered-by{ color: rgba(255,255,255,.4); }
+
+  .az-hero-photo{
+    height: var(--hero-h);
+    background: url('../assets/banner-100-montaditos.jpg') 42% 76% / auto 188% no-repeat;
+  }
+
+  .az-logo-wrap{
+    position:absolute; top: calc(-1 * var(--badge-d) / 2); left:50%; transform:translateX(-50%);
+    z-index:3;
+  }
+  .az-logo-badge{
+    width:var(--badge-d); height:var(--badge-d); overflow:hidden; padding:0; background:#fff; border:none;
+    box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  }
+  .az-logo-badge img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .offer-stack{ max-width: 600px; margin: 0 auto; padding: 0 20px 48px; }
+  .offer-cta-list{ display:flex; flex-direction:column; gap:10px; }
+
+  .offer-stack .offer-card-primary{ margin-top: calc(-1 * var(--card-overlap)); position:relative; z-index:2; }
+  .offer-card-primary .az-card{
+    position:relative;
+    box-shadow: 0 12px 34px rgba(0,0,0,.22);
+    padding-top: var(--card-pad-top);
+  }
+
+  @media (max-width: 820px){
+    :root{
+      --hero-h: 340px;
+      --badge-d: 96px;
+      --card-overlap: 40px;
+      --card-pad-top: 58px;
+    }
+    .az-hero-photo{
+      background-position: 25% 25%;
+      background-size: auto 130%;
+    }
+  }
+
+  @media (max-height: 700px){
+    :root{
+      --hero-h: 240px;
+      --badge-d: 76px;
+      --card-overlap: 32px;
+      --card-pad-top: 44px;
+    }
+    .az-hero-photo{
+      background-position: 30% 20%;
+      background-size: auto 118%;
+    }
+    .offer-title{ font-size:24px; margin-bottom:8px; }
+    .offer-desc{ font-size:13.5px; line-height:1.45; margin-bottom:6px; }
+    .offer-cta-list{ gap:8px; }
+    :root{ --cta-button-padding-y: 13px; }
+    .offer-expiry{ margin-top:10px; padding:8px; }
+    .az-terms-link{ margin-top:12px; padding:9px 12px; }
+  }
+
+  .offer-title{ font-size:32px; font-weight:800; letter-spacing:-0.01em; text-align:center; }
+  .offer-title .accent{ color: var(--primary-color); }
+  .offer-desc{ text-align:center; margin-bottom:8px; }
+  .offer-companion{ font-size:13.5px; color: var(--text-muted); text-align:center; margin: 0 0 20px; }
+  .confirm-title{ text-align:center; color: var(--primary-color); }
+  .confirm-desc{ text-align:center; }
+  .offer-expired-title{ text-align:center; }
+  .offer-expired-desc{ text-align:center; }
+
+  .offer-expiry{
+    background: none; border: none;
+    color: #55524B; font-weight:600; letter-spacing:.01em; text-align:center;
+  }
+
+  /* ---- Top controls: language switcher (left) + airZoon mark (right) ---- */
+  .az-cell--controls{ justify-content:space-between; align-items:flex-start; }
+  .az-logo-mark{ height:60px; width:auto; display:block; }
+
+  .az-lang-wrap{ position:relative; }
+  .az-lang{
+    width:44px; height:44px; border-radius:50%;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(4px);
+    border:none; cursor:pointer; font-size:19px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.12);
+  }
+  .az-lang-dropdown{
+    position:absolute; top:52px; left:0; z-index:10;
+    background:#fff; border-radius:12px; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    padding:6px; min-width:168px;
+  }
+  .az-lang-dropdown[hidden]{ display:none; }
+  .az-lang-option{
+    display:flex; align-items:center; gap:10px; width:100%;
+    padding:9px 10px; border:none; background:none; cursor:pointer;
+    border-radius:8px; font-size:14px; color:#232323; text-align:left;
+    font-family: var(--font-body);
+  }
+  .az-lang-option:hover{ background: var(--surface-muted); }
+  .az-lang-option .flag{ font-size:16px; }
+  .az-lang-option .check{ margin-left:auto; color: var(--primary-color); font-weight:700; opacity:0; }
+  .az-lang-option[aria-selected="true"] .check{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">
+  <strong>Preview controls</strong><span>— not part of the design, review only</span>
+  <a class="button-link" href="index.html">All variants</a>
+  <div class="spacer"></div>
+  <div class="group" role="group" aria-label="Variant">
+    <select id="variant-nav" aria-label="Switch variant">
+      <option value="variant-100montaditos-birthday.html" selected>100 Montaditos</option>
+      <option value="variant-aestheticmedicine-birthday.html">Aesthetic Medicine</option>
+    </select>
+  </div>
+  <div class="group" role="group" aria-label="Flow">
+    <span class="group-label">Flow:</span>
+    <button data-flow-state="before" aria-pressed="true">Before booking</button>
+    <button data-flow-state="after" aria-pressed="false">After booking</button>
+  </div>
+  <div class="group" role="group" aria-label="Validity">
+    <span class="group-label">Validity:</span>
+    <button data-offer-status="active" aria-pressed="true">Active</button>
+    <button data-offer-status="expired" aria-pressed="false">Expired</button>
+  </div>
+  <div class="group" role="group" aria-label="Coupon">
+    <span class="group-label">Coupon:</span>
+    <button data-incentive-style="note" aria-pressed="true">Note</button>
+    <button data-incentive-style="duotone" aria-pressed="false">Duotone</button>
+  </div>
+</div>
+
+<div class="splash-page-container" data-flow-state="before" data-offer-status="active" data-incentive-style="note">
+
+  <div class="az-cell--controls">
+    <div class="az-lang-wrap">
+      <button class="az-lang" id="lang-trigger" aria-haspopup="listbox" aria-expanded="false">🇪🇸</button>
+      <div class="az-lang-dropdown" id="lang-dropdown" role="listbox" hidden>
+        <button class="az-lang-option" role="option" aria-selected="true"><span class="flag">🇪🇸</span> Español <span class="check">✓</span></button>
+        <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇬🇧</span> English <span class="check">✓</span></button>
+        <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇫🇷</span> Français <span class="check">✓</span></button>
+        <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇩🇪</span> Deutsch <span class="check">✓</span></button>
+      </div>
+    </div>
+    <img class="az-logo-mark" src="../assets/airzoon-pin-mark.png" alt="airZoon">
+  </div>
+
+  <div class="az-hero-photo"></div>
+
+  <div class="offer-stack">
+
+    <div class="az-cell az-cell--offer offer-card-primary">
+      <div class="az-card">
+
+        <div class="az-logo-wrap">
+          <div class="az-logo-badge">
+            <img src="../assets/logo-100-montaditos.png" alt="100 Montaditos">
+          </div>
+        </div>
+
+        <!-- ============ PANEL "ANTES" — reservar el regalo ============ -->
+        <div data-panel="before">
+
+          <h2 class="offer-title">¡Feliz cumple, <span class="accent">Carlos</span>!</h2>
+          <p class="offer-desc">Te regalamos una ronda de montaditos y una copa de sangría para tu mesa.</p>
+          <p class="offer-companion">Reservá para tu grupo — cuantos más sean, mejor se festeja.</p>
+
+          <div class="offer-cta-list">
+            <a class="cta-button" href="https://wa.me/18495550132?text=Hola%2C%20quiero%20reservar%20mi%20mesa%20de%20cumplea%C3%B1os" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
+              <span class="cta-main">Reservar mi mesa por WhatsApp<span class="cta-sub">Te confirmamos el horario</span></span>
+            </a>
+          </div>
+
+          <p class="offer-expiry">Válido durante todo el mes</p>
+
+          <a class="az-terms-link" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            Leer términos y condiciones
+            <span class="chev">›</span>
+          </a>
+
+          <!-- Sin bloque de conexión acá: la única acción de esta página
+               ya es escribir por WhatsApp. Repetir "hablar con el negocio"
+               sería el mismo canal duplicado, sin motivo distinto. -->
+        </div>
+
+        <!-- ============ PANEL "DESPUÉS" — ya reservó ============ -->
+        <div data-panel="after">
+          <h2 class="confirm-title">¡Listo! Ya reservaste tu mesa</h2>
+          <p class="confirm-desc">Te esperamos para brindar por tu cumpleaños.</p>
+        </div>
+
+        <!-- ============ PANEL "CADUCADA" — pasó el mes ============ -->
+        <div data-panel="expired">
+          <p class="offer-expired-eyebrow">Regalo vencido</p>
+          <h2 class="offer-expired-title">Este regalo ya no está disponible</h2>
+          <p class="offer-expired-desc">Pero seguí atento a tu WhatsApp: te vamos a escribir para tu próximo cumpleaños.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cupón airZoon: card propia, separada de la card de oferta a
+         propósito — es identidad de airZoon, no del comercio. Siempre
+         visible, no depende del flujo de validación. -->
+    <div class="az-cell az-cell--coupon">
+      <div class="az-coupon">
+        <span class="az-coupon-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <div class="az-coupon-body">
+          <div class="az-coupon-top">
+            <p class="az-coupon-title">Cupón airZoon de conexión</p>
+            <p class="az-coupon-desc">Es tuyo, sin costo: conectate <strong>5x más rápido</strong> la próxima vez que estés en un local con airZoon.</p>
+          </div>
+          <div class="az-coupon-code-row">
+            <span class="az-coupon-code-label">
+              <p class="az-coupon-code-eyebrow">Tu código</p>
+              <span class="az-coupon-code">AZFAST-8H3K</span>
+            </span>
+            <button class="az-coupon-copy-btn" data-copy-coupon="AZFAST-8H3K">Copiar código</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dirección + horario: mismos datos reales que Página Oferta. -->
+    <div class="az-cell az-cell--location">
+      <div class="az-card">
+        <h3 class="location-title">Dónde encontrarnos</h3>
+
+        <div class="location-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <p class="location-name">Acrópolis Business Mall</p>
+            <a class="location-phone" href="tel:+18099594254">(809) 959-4254</a>
+            <a class="location-link" href="https://maps.google.com/?q=Acropolis+Business+Mall+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar ›</a>
+          </div>
+        </div>
+
+        <div class="location-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <p class="location-name">Galería 360</p>
+            <a class="location-phone" href="tel:+18093638505">(809) 363-8505</a>
+            <a class="location-link" href="https://maps.google.com/?q=Galer%C3%ADa+360+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar ›</a>
+          </div>
+        </div>
+
+        <div class="location-hours-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p class="location-hours">Lunes a domingo, 12:00 a 23:00</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="az-powered-by">Powered by airZoon</p>
+
+</div>
+
+<script src="../shared/preview-bar.js?v=3"></script>
+
+</body>
+</html>
