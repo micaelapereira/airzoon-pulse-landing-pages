@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-09-15T16:28:21.250Z",
         "reason": "same as 100montaditos-birthday: verified visually, spacing rhythm already varies via shared CSS"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "pulse-booking-pages/shared/pulse-components.css"
+        ],
+        "createdAt": "2026-09-15T19:27:25.235Z",
+        "reason": "user confirmed: Tint/Stripe connect-button accent bars were designed and approved against Figma references earlier this session (same reasoning already sanctioned in the sibling pulse-offer-pages/shared/pulse-components.css); this file is a copy of that approved code"
       }
     ]
   }

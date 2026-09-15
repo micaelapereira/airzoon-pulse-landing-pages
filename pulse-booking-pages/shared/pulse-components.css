@@ -370,13 +370,16 @@
 }
 .validity-top svg{ width:14px; height:14px; flex-shrink:0; }
 
-/* Strip: recuadro con borde de acento a la izquierda, mismo lenguaje que
-   ya usa .az-terms-link (caja con ícono) pero con el color de marca en
-   vez de neutro — así se lee como un beneficio, no como letra chica. */
+/* Strip: recuadro con fondo teñido del color de marca (no franja lateral
+   — ese acento ya lo usan Tint y Stripe en el botón de conexión, y
+   repetirlo acá empieza a leerse como el tic genérico de "barra de color
+   a un lado" en vez de una decisión propia). Mismo lenguaje de caja con
+   ícono que .az-terms-link, pero con el color de marca en el fondo en
+   vez de un borde. */
 .validity-strip{
   align-items:center; gap:12px; text-align:left;
-  background: var(--surface-muted); border:1px solid var(--border);
-  border-left: 4px solid var(--primary-color);
+  background: color-mix(in srgb, var(--primary-color) 8%, var(--surface-muted));
+  border:1px solid color-mix(in srgb, var(--primary-color) 22%, var(--border));
   border-radius: var(--element-border-radius);
   padding:14px 16px; margin: 4px 28px 20px;
 }
