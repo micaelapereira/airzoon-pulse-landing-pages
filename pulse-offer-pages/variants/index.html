@@ -16,7 +16,14 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  .page-header{ display:flex; align-items:center; padding: 28px 40px 0; max-width: 900px; margin:0 auto; }
+  .page-header{ display:flex; flex-direction:column; align-items:flex-start; gap:14px; padding: 28px 40px 0; max-width: 900px; margin:0 auto; }
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; width:fit-content;
+    font-size:13px; font-weight:600; color: var(--text-secondary);
+    text-decoration:none; padding:6px 12px; border-radius:999px;
+    border:1px solid var(--border); background: var(--surface-2);
+  }
+  .back-link:hover{ border-color: var(--color-primary); color: var(--color-primary); }
   .brand-logo{ height:88px; width:auto; display:block; }
   main{ max-width: 900px; margin: 0 auto; padding: 32px 40px 96px; }
   h1{ font-size: clamp(24px, 3vw, 30px); font-weight:700; margin:0 0 12px; }
@@ -44,6 +51,7 @@
 <body>
 
   <header class="page-header">
+    <a class="back-link" href="../../index.html">← All landing pages</a>
     <img class="brand-logo" src="../assets/airzoon-logo.png" alt="airZoon">
   </header>
 
