@@ -86,27 +86,39 @@
 
   @media (max-height: 700px){
     :root{
-      --hero-h: 240px;
+      --hero-h: 205px;
       --badge-d: 76px;
-      --card-overlap: 32px;
-      --card-pad-top: 48px;
+      --card-overlap: 40px;
+      --card-pad-top: 40px;
     }
     .az-hero-photo{
       background-position: 30% 20%;
       background-size: auto 118%;
     }
-    .offer-title{ font-size:23px; margin-top:0; margin-bottom:8px; }
-    .offer-desc{ font-size:13px; line-height:1.4; margin-bottom:8px; }
-    .offer-companion{ font-size:12.5px; margin-bottom:14px; }
+    .offer-title{ font-size:22px; margin-top:0; margin-bottom:6px; }
+    .offer-desc{ font-size:13px; line-height:1.4; margin-bottom:6px; }
+    .offer-companion{ font-size:12.5px; margin-bottom:10px; }
     .offer-cta-list{ gap:8px; }
     :root{ --cta-button-padding-y: 13px; }
-    .offer-expiry{ margin-top:8px; padding:8px; }
-    .az-terms-link{ margin-top:10px; padding:9px 12px; }
-    .offer-card-primary .az-card{ padding-bottom: calc(var(--block-padding) + 4px); }
+    .offer-expiry{ margin-top:6px; padding:8px; }
+    .az-terms-link{ margin-top:8px; padding:9px 12px; }
+    .offer-card-primary .az-card{ padding-bottom: var(--block-padding); }
   }
 
   .offer-title{ font-size:32px; font-weight:800; letter-spacing:-0.01em; text-align:center; margin-top:10px; }
   .offer-title .accent{ color: var(--primary-color); }
+  .offer-gift-photo{
+    width:100%; aspect-ratio: 16 / 10; object-fit:cover;
+    border-radius: var(--element-border-radius);
+    margin: 18px 0;
+  }
+  /* Placed after the base rule on purpose: a media-query rule earlier in
+     the file loses to a later non-media rule of equal specificity
+     regardless of the media condition — same-specificity ties resolve by
+     source order, not by which one is "more specific" to the viewport. */
+  @media (max-height: 700px){
+    .offer-gift-photo{ aspect-ratio: 16 / 5; margin:8px 0; }
+  }
   .offer-desc{ text-align:center; margin-bottom:22px; }
   .offer-companion{ font-size:13.5px; color: var(--text-muted); text-align:center; margin: 0 0 34px; }
   .confirm-title{ text-align:center; color: var(--primary-color); }
@@ -210,7 +222,8 @@
         <div data-panel="before">
 
           <h2 class="offer-title">¡Feliz cumple, <span class="accent">Carlos</span>!</h2>
-          <p class="offer-desc">Te regalamos una ronda de montaditos y una copa de sangría para tu mesa.</p>
+          <img class="offer-gift-photo" src="../assets/gift-100montaditos.jpg" alt="Montadito y trago de regalo">
+          <p class="offer-desc">Te regalamos un montadito por cada invitado, y una copa o un trago a elección para vos.</p>
           <p class="offer-companion">Reservá para tu grupo — cuantos más sean, mejor se festeja.</p>
 
           <div class="offer-cta-list">
