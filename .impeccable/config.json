@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "monotonous-spacing",
+        "value": "*",
+        "files": [
+          "pulse-booking-pages/variants/variant-100montaditos-birthday.html"
+        ],
+        "createdAt": "2026-09-15T16:28:21.188Z",
+        "reason": "verified visually: 8/20px within-card grouping vs 32px coupon-section gap already carried over from shared pulse-components.css (the Etapa-1 fix for this exact concern); heuristic likely double-counts inherited shared-CSS spacing as file-local"
+      },
+      {
+        "rule": "monotonous-spacing",
+        "value": "*",
+        "files": [
+          "pulse-booking-pages/variants/variant-aestheticmedicine-birthday.html"
+        ],
+        "createdAt": "2026-09-15T16:28:21.250Z",
+        "reason": "same as 100montaditos-birthday: verified visually, spacing rhythm already varies via shared CSS"
+      }
+    ]
+  }
+}
