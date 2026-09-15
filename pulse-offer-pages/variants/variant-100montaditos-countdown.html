@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="../shared/tokens.css?v=3">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=23">
 <style>
-  /* ---- Con cuenta atrás — franja horaria floja / última hora del día ----
-     Mismo layout que Minimal Direct; el único bloque que cambia es
-     .offer-expiry -> .offer-countdown (ver shared/pulse-components.css).
-     Pensada para reactivar en una franja puntual (ej. 15 a 18hs) donde la
-     urgencia del reloj es parte de la ventaja, no solo un dato legal. */
+  /* ---- Countdown — slow time slot / last hour of the day ----
+     Same layout as Minimal Direct; the only block that changes is
+     .offer-expiry -> .offer-countdown (see shared/pulse-components.css).
+     Built to reactivate during a specific window (e.g. 3-6pm) where the
+     clock's urgency is part of the deal, not just legal fine print. */
   :root{
     --text-color: #232323;
     --primary-color: #CD0A09;
@@ -81,13 +81,13 @@
     }
   }
 
-  /* ---- Pantallas chicas y bajas (iPhone SE y similares) ----
-     El objetivo de lectura del brief es "ventaja + fecha en <3s sin
-     desplazar". Medido en 375x667: con los valores de arriba el CTA y la
-     vigencia quedaban debajo del fold. max-height (no solo max-width) es
-     la condición correcta acá — el problema es alto de viewport, no ancho:
-     un 390x844 entraba bien con los mismos valores. Achica hero/badge/
-     tipografía un escalón más solo cuando la altura es chica de verdad. */
+  /* ---- Small, short screens (iPhone SE and similar) ----
+     The brief's reading goal is "deal + date in <3s without scrolling".
+     Measured at 375x667: with the values above the CTA and validity fell
+     below the fold. max-height (not just max-width) is the right
+     condition here — the problem is viewport height, not width: a
+     390x844 fit fine with the same values. Shrinks hero/badge/type one
+     more step only when the height is genuinely small. */
   @media (max-height: 700px){
     :root{
       --hero-h: 240px;
@@ -227,7 +227,7 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "ANTES" — acción principal de la página ============ -->
+        <!-- ============ "BEFORE" PANEL — the page's main action ============ -->
         <div data-panel="before">
 
           <div data-offer-panel="whatsapp">
@@ -284,13 +284,13 @@
 
         </div>
 
-        <!-- ============ PANEL "DESPUÉS" — acción principal ya validada ============ -->
+        <!-- ============ "AFTER" PANEL — main action already claimed ============ -->
         <div data-panel="after">
           <h2 class="confirm-title">¡Listo! Ya tenés tu 30% off</h2>
           <p class="confirm-desc">Mostrá esta pantalla en caja antes de que termine la franja de esta tarde.</p>
         </div>
 
-        <!-- ============ PANEL "CADUCADA" — se acabó la franja horaria ============ -->
+        <!-- ============ "EXPIRED" PANEL — the time window ran out ============ -->
         <div data-panel="expired">
           <p class="offer-expired-eyebrow">Oferta finalizada</p>
           <h2 class="offer-expired-title">Se terminó el tiempo de esta oferta</h2>
@@ -300,10 +300,10 @@
       </div>
     </div>
 
-    <!-- Cupón airZoon: card propia, separada de la card de oferta a
-         propósito — es identidad de airZoon, no del comercio, y tiene que
-         leerse como algo distinto, no como "más contenido" pegado abajo.
-         Siempre visible, no depende del flujo de validación. -->
+    <!-- airZoon coupon: its own card, kept separate from the offer card
+         on purpose — it's airZoon's identity, not the business's, and it
+         has to read as something distinct, not "more content" tacked on
+         below. Always visible, doesn't depend on the claim flow. -->
     <div class="az-cell az-cell--coupon">
       <div class="az-coupon">
         <span class="az-coupon-icon">
@@ -325,8 +325,8 @@
       </div>
     </div>
 
-    <!-- Dirección + mapa + horario: card de cierre, siempre visible
-         (mismo criterio que el cupón: no depende del flujo de validación). -->
+    <!-- Address + map + hours: closing card, always visible
+         (same rule as the coupon: doesn't depend on the claim flow). -->
     <div class="az-cell az-cell--location">
       <div class="az-card">
         <h3 class="location-title">Dónde encontrarnos</h3>
@@ -364,13 +364,13 @@
 
 <script src="../shared/preview-bar.js?v=3"></script>
 <script>
-  /* Cuenta atrás — comportamiento real de producción, no scaffolding de
-     preview (por eso vive acá y no en preview-bar.js). El markup lleva un
-     data-countdown con la fecha real de cierre de campaña (formato ISO,
-     la seteará Payload); si esa fecha ya pasó — como puede ocurrir al
-     abrir este archivo de ejemplo en cualquier momento — se usa un cierre
-     de demo 3 horas hacia adelante para que el timer siempre se vea
-     corriendo en la revisión. */
+  /* Countdown — real production behavior, not preview scaffolding (that's
+     why it lives here and not in preview-bar.js). The markup carries a
+     data-countdown with the campaign's real close date (ISO format, set
+     by Payload); if that date has already passed — which can happen when
+     opening this sample file at any point in time — a demo close 3 hours
+     ahead is used instead, so the timer always looks like it's running
+     during review. */
   document.addEventListener("DOMContentLoaded", function(){
     var el = document.querySelector("[data-countdown]");
     if (!el) return;

@@ -10,10 +10,10 @@
 <link rel="stylesheet" href="../shared/tokens.css?v=4">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=30">
 <style>
-  /* ---- Cumpleaños — reskin de 100 Montaditos, mismo shell y tokens.
-     Encaja de forma natural con este arquetipo: es exactamente el "spa
-     urbano" del caso de uso (regalo de cumpleaños que trae a la persona y
-     casi siempre a un acompañante que paga). */
+  /* ---- Birthday — reskin of 100 Montaditos, same shell and tokens.
+     Fits this archetype naturally: it's exactly the "urban spa" use case
+     (a birthday gift that brings the person in, and almost always a
+     companion who pays too). */
   :root{
     --text-color: #232323;
     --primary-color: #5C3D2E;
@@ -205,7 +205,7 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "ANTES" — reservar el regalo ============ -->
+        <!-- ============ "BEFORE" PANEL — book the gift ============ -->
         <div data-panel="before">
 
           <h2 class="offer-title">¡Feliz cumple, <span class="accent">Valentina</span>!</h2>
@@ -227,18 +227,19 @@
             <span class="chev">›</span>
           </a>
 
-          <!-- Sin bloque de conexión acá: la única acción de esta página
-               ya es escribir por WhatsApp. Repetir "hablar con el negocio"
-               sería el mismo canal duplicado, sin motivo distinto. -->
+          <!-- No connect block here: the page's only action is already
+               messaging on WhatsApp. Repeating "talk to the business"
+               would be the same channel duplicated, with no distinct
+               reason. -->
         </div>
 
-        <!-- ============ PANEL "DESPUÉS" — ya reservó ============ -->
+        <!-- ============ "AFTER" PANEL — already booked ============ -->
         <div data-panel="after">
           <h2 class="confirm-title">¡Listo! Ya reservaste tu regalo</h2>
           <p class="confirm-desc">Te esperamos, con tu acompañante si querés sumar a alguien.</p>
         </div>
 
-        <!-- ============ PANEL "CADUCADA" — pasó el mes ============ -->
+        <!-- ============ "EXPIRED" PANEL — the month has passed ============ -->
         <div data-panel="expired">
           <p class="offer-expired-eyebrow">Regalo vencido</p>
           <h2 class="offer-expired-title">Este regalo ya no está disponible</h2>
@@ -248,9 +249,9 @@
       </div>
     </div>
 
-    <!-- Cupón airZoon: card propia, separada de la card de oferta a
-         propósito — es identidad de airZoon, no del comercio. Siempre
-         visible, no depende del flujo de validación. -->
+    <!-- airZoon coupon: its own card, kept separate from the offer card
+         on purpose — it's airZoon's identity, not the business's.
+         Always visible, doesn't depend on the claim flow. -->
     <div class="az-cell az-cell--coupon">
       <div class="az-coupon">
         <span class="az-coupon-icon">
@@ -272,7 +273,7 @@
       </div>
     </div>
 
-    <!-- Dirección + horario: mismos datos que Página Oferta. -->
+    <!-- Address + hours: same data as the Offer Page. -->
     <div class="az-cell az-cell--location">
       <div class="az-card">
         <h3 class="location-title">Dónde encontrarnos</h3>

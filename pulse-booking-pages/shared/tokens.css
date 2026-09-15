@@ -224,7 +224,7 @@ img{ max-width:100%; display:block; }
 }
 .az-cell--social svg{ width:18px; height:18px; }
 
-/* ---- Offer-type panels (WhatsApp / Código) — pure CSS, no JS toggling ---- */
+/* ---- Offer-type panels (WhatsApp / Code) — pure CSS, no JS toggling ---- */
 [data-offer-panel]{ display:none; }
 .splash-page-container[data-offer-type="whatsapp"] [data-offer-panel="whatsapp"]{ display:block; }
 .splash-page-container[data-offer-type="code"] [data-offer-panel="code"]{ display:block; }

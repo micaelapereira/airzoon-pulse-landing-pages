@@ -10,13 +10,12 @@
 <link rel="stylesheet" href="../shared/tokens.css?v=3">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=23">
 <style>
-  /* ---- Con cuenta atrás — Aesthetic Medicine (reskin de 100 Montaditos) ----
-     Mismo layout que Minimal Direct; el único bloque que cambia es
-     .offer-expiry -> .offer-countdown. Acá la urgencia no es "antes de
-     que cierre el local" sino "cupos limitados de la semana" — un
-     med-spa no tiene franjas horarias flojas como un restaurante, así
-     que la cuenta atrás cuenta contra el cierre de la promo, no contra
-     una hora de cierre del día. */
+  /* ---- Countdown — Aesthetic Medicine (reskin of 100 Montaditos) ----
+     Same layout as Minimal Direct; the only block that changes is
+     .offer-expiry -> .offer-countdown. Here the urgency isn't "before the
+     venue closes" but "limited slots this week" — a med-spa doesn't have
+     slow time slots the way a restaurant does, so the countdown runs
+     against the promo's close, not a daily closing time. */
   :root{
     --text-color: #232323;
     --primary-color: #5C3D2E;
@@ -212,7 +211,7 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "ANTES" — acción principal de la página ============ -->
+        <!-- ============ "BEFORE" PANEL — the page's main action ============ -->
         <div data-panel="before">
 
           <div data-offer-panel="whatsapp">
@@ -269,13 +268,13 @@
 
         </div>
 
-        <!-- ============ PANEL "DESPUÉS" — acción principal ya validada ============ -->
+        <!-- ============ "AFTER" PANEL — main action already claimed ============ -->
         <div data-panel="after">
           <h2 class="confirm-title">¡Listo! Ya tenés tu 25% off</h2>
           <p class="confirm-desc">Mostrá esta pantalla en tu turno antes de que termine la semana.</p>
         </div>
 
-        <!-- ============ PANEL "CADUCADA" — terminó la semana de la oferta ============ -->
+        <!-- ============ "EXPIRED" PANEL — the offer's week has ended ============ -->
         <div data-panel="expired">
           <p class="offer-expired-eyebrow">Oferta finalizada</p>
           <h2 class="offer-expired-title">Terminó la semana de esta oferta</h2>
@@ -285,10 +284,10 @@
       </div>
     </div>
 
-    <!-- Cupón airZoon: card propia, separada de la card de oferta a
-         propósito — es identidad de airZoon, no del comercio, y tiene que
-         leerse como algo distinto, no como "más contenido" pegado abajo.
-         Siempre visible, no depende del flujo de validación. -->
+    <!-- airZoon coupon: its own card, kept separate from the offer card
+         on purpose — it's airZoon's identity, not the business's, and it
+         has to read as something distinct, not "more content" tacked on
+         below. Always visible, doesn't depend on the claim flow. -->
     <div class="az-cell az-cell--coupon">
       <div class="az-coupon">
         <span class="az-coupon-icon">
@@ -310,7 +309,7 @@
       </div>
     </div>
 
-    <!-- Dirección + horario: card de cierre, siempre visible. -->
+    <!-- Address + hours: closing card, always visible. -->
     <div class="az-cell az-cell--location">
       <div class="az-card">
         <h3 class="location-title">Dónde encontrarnos</h3>

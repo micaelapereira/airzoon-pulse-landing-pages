@@ -168,12 +168,12 @@ img{ max-width:100%; display:block; }
   box-shadow: 0 2px 16px rgba(0,0,0,.06);
 }
 
-/* ---- Offer CTA button — theming mirrors the real Connect-WiFi button ---- */
-/* Ícono grande + bloque de texto de 2 líneas: el conjunto ícono+texto se
-   centra como una sola unidad dentro del botón (justify-content:center
-   acá), pero DENTRO de esa unidad las 2 líneas de texto quedan alineadas
-   a la izquierda contra el ícono (align-items:flex-start en .cta-main),
-   no cada una centrada por separado. Mismo tratamiento que Reserva. */
+/* ---- Offer CTA button — theming mirrors the real Connect-WiFi button ----
+   Large icon + 2-line text block: the icon+text pair is centered as one
+   unit inside the button (justify-content:center here), but INSIDE that
+   unit the 2 text lines are left-aligned against the icon
+   (align-items:flex-start on .cta-main), not each centered on its own.
+   Same treatment as the Booking Page. ---- */
 .cta-button{
   appearance:none; cursor:pointer; width:100%; display:flex;
   align-items:center; justify-content:center; gap:14px;
@@ -222,7 +222,7 @@ img{ max-width:100%; display:block; }
 }
 .az-cell--social svg{ width:18px; height:18px; }
 
-/* ---- Offer-type panels (WhatsApp / Código) — pure CSS, no JS toggling ---- */
+/* ---- Offer-type panels (WhatsApp / Code) — pure CSS, no JS toggling ---- */
 [data-offer-panel]{ display:none; }
 .splash-page-container[data-offer-type="whatsapp"] [data-offer-panel="whatsapp"]{ display:block; }
 .splash-page-container[data-offer-type="code"] [data-offer-panel="code"]{ display:block; }

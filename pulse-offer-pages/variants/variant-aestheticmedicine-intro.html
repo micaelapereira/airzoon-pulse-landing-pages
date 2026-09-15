@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="../shared/tokens.css?v=3">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=23">
 <style>
-  /* ---- Con presentación del negocio — Aesthetic Medicine (reskin) ----
-     Mismo layout que Minimal Direct, con la card "Sobre nosotros" debajo
-     de la oferta. banner-spa.jpg no trae texto grabado (a diferencia del
-     banner de 100 Montaditos), así que los crops de la galería no tienen
-     una zona prohibida — se puede usar cualquier posición. */
+  /* ---- Business intro — Aesthetic Medicine (reskin) ----
+     Same layout as Minimal Direct, with the "About us" card below the
+     offer. banner-spa.jpg has no baked-in text (unlike the 100
+     Montaditos banner), so the gallery crops have no off-limits zone —
+     any position can be used. */
   :root{
     --text-color: #232323;
     --primary-color: #5C3D2E;
@@ -217,7 +217,7 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "ANTES" — acción principal de la página ============ -->
+        <!-- ============ "BEFORE" PANEL — the page's main action ============ -->
         <div data-panel="before">
 
           <div data-offer-panel="whatsapp">
@@ -266,13 +266,13 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "DESPUÉS" — acción principal ya validada ============ -->
+        <!-- ============ "AFTER" PANEL — main action already claimed ============ -->
         <div data-panel="after">
           <h2 class="confirm-title">¡Listo! Ya tenés tu turno</h2>
           <p class="confirm-desc">Te esperamos en tu primera visita a Aesthetic Medicine.</p>
         </div>
 
-        <!-- ============ PANEL "CADUCADA" — la oferta ya venció ============ -->
+        <!-- ============ "EXPIRED" PANEL — the offer has lapsed ============ -->
         <div data-panel="expired">
           <p class="offer-expired-eyebrow">Oferta finalizada</p>
           <h2 class="offer-expired-title">Esta oferta ya no está disponible</h2>
@@ -282,10 +282,10 @@
       </div>
     </div>
 
-    <!-- Cupón airZoon: card propia, separada de la card de oferta a
-         propósito — es identidad de airZoon, no del comercio, y tiene que
-         leerse como algo distinto, no como "más contenido" pegado abajo.
-         Siempre visible, no depende del flujo de validación. -->
+    <!-- airZoon coupon: its own card, kept separate from the offer card
+         on purpose — it's airZoon's identity, not the business's, and it
+         has to read as something distinct, not "more content" tacked on
+         below. Always visible, doesn't depend on the claim flow. -->
     <div class="az-cell az-cell--coupon">
       <div class="az-coupon">
         <span class="az-coupon-icon">
@@ -307,9 +307,9 @@
       </div>
     </div>
 
-    <!-- Card secundaria: bloque "Sobre nosotros". banner-spa.jpg no trae
-         texto grabado, así que los crops pueden usar cualquier posición
-         sin riesgo de cortar texto. -->
+    <!-- Secondary card: "About us" block. banner-spa.jpg has no baked-in
+         text, so the crops can use any position without risking cutting
+         off text. -->
     <div class="az-cell az-cell--intro" data-panel="before">
       <div class="az-card">
         <h3 class="intro-title">Sobre nosotros</h3>
@@ -333,7 +333,7 @@
       </div>
     </div>
 
-    <!-- Dirección + horario: card de cierre, siempre visible. -->
+    <!-- Address + hours: closing card, always visible. -->
     <div class="az-cell az-cell--location">
       <div class="az-card">
         <h3 class="location-title">Dónde encontrarnos</h3>

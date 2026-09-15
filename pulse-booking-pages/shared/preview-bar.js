@@ -1,12 +1,12 @@
 /* ==========================================================================
-   airZoon Pulse — Página Oferta — dev-only preview bar behavior
+   airZoon Pulse — Offer Page — dev-only preview bar behavior
    Same generic pattern as the Campaign Pages project's shared/preview-bar.js:
    any preview-bar button group keyed on a shared data-* attribute toggles
    that attribute on .splash-page-container and updates aria-pressed within
    its own group — a variant can add a new toggle group (e.g. a future
    archetype's own state) without touching this file.
    Also wires the two copy-to-clipboard buttons shared by every variant
-   (offer code + cupón airZoon code) and the variant switcher <select>.
+   (offer code + airZoon coupon code) and the variant switcher <select>.
    ========================================================================== */
 
 (function(){

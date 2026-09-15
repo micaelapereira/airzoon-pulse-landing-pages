@@ -10,13 +10,13 @@
 <link rel="stylesheet" href="../shared/tokens.css?v=3">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=23">
 <style>
-  /* ---- Con presentación del negocio — primera visita / quien no lo conoce ----
-     Mismo layout que Minimal Direct, con una card secundaria
-     (.az-cell--intro) debajo de la oferta: foto + 2-3 líneas sobre el
-     negocio. Solo vive en el panel "antes" — es contexto para decidir ir,
-     no información de canje, así que no tiene sentido después de validar
-     ni en la pantalla de oferta caducada. Reusa data-panel="before" del
-     mismo sistema de toggles, sin CSS nueva. */
+  /* ---- Business intro — first visit / people who don't know the business ----
+     Same layout as Minimal Direct, with a secondary card
+     (.az-cell--intro) below the offer: photo + 2-3 lines about the
+     business. It only lives in the "before" panel — it's context for
+     deciding whether to go, not redemption info, so it doesn't make
+     sense after claiming or on the expired-offer screen. Reuses
+     data-panel="before" from the same toggle system, no new CSS. */
   :root{
     --text-color: #232323;
     --primary-color: #CD0A09;
@@ -83,13 +83,13 @@
     }
   }
 
-  /* ---- Pantallas chicas y bajas (iPhone SE y similares) ----
-     El objetivo de lectura del brief es "ventaja + fecha en <3s sin
-     desplazar". Medido en 375x667: con los valores de arriba el CTA y la
-     vigencia quedaban debajo del fold. max-height (no solo max-width) es
-     la condición correcta acá — el problema es alto de viewport, no ancho:
-     un 390x844 entraba bien con los mismos valores. Achica hero/badge/
-     tipografía un escalón más solo cuando la altura es chica de verdad. */
+  /* ---- Small, short screens (iPhone SE and similar) ----
+     The brief's reading goal is "deal + date in <3s without scrolling".
+     Measured at 375x667: with the values above the CTA and validity fell
+     below the fold. max-height (not just max-width) is the right
+     condition here — the problem is viewport height, not width: a
+     390x844 fit fine with the same values. Shrinks hero/badge/type one
+     more step only when the height is genuinely small. */
   @media (max-height: 700px){
     :root{
       --hero-h: 240px;
@@ -236,7 +236,7 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "ANTES" — acción principal de la página ============ -->
+        <!-- ============ "BEFORE" PANEL — the page's main action ============ -->
         <div data-panel="before">
 
           <div data-offer-panel="whatsapp">
@@ -285,13 +285,13 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "DESPUÉS" — acción principal ya validada ============ -->
+        <!-- ============ "AFTER" PANEL — main action already claimed ============ -->
         <div data-panel="after">
           <h2 class="confirm-title">¡Listo! Ya tenés tu 20% off</h2>
           <p class="confirm-desc">Mostrá esta pantalla en caja en tu primera visita a 100 Montaditos.</p>
         </div>
 
-        <!-- ============ PANEL "CADUCADA" — la oferta ya venció ============ -->
+        <!-- ============ "EXPIRED" PANEL — the offer has lapsed ============ -->
         <div data-panel="expired">
           <p class="offer-expired-eyebrow">Oferta finalizada</p>
           <h2 class="offer-expired-title">Esta oferta ya no está disponible</h2>
@@ -301,10 +301,10 @@
       </div>
     </div>
 
-    <!-- Cupón airZoon: card propia, separada de la card de oferta a
-         propósito — es identidad de airZoon, no del comercio, y tiene que
-         leerse como algo distinto, no como "más contenido" pegado abajo.
-         Siempre visible, no depende del flujo de validación. -->
+    <!-- airZoon coupon: its own card, kept separate from the offer card
+         on purpose — it's airZoon's identity, not the business's, and it
+         has to read as something distinct, not "more content" tacked on
+         below. Always visible, doesn't depend on the claim flow. -->
     <div class="az-cell az-cell--coupon">
       <div class="az-coupon">
         <span class="az-coupon-icon">
@@ -326,19 +326,19 @@
       </div>
     </div>
 
-    <!-- Card secundaria: bloque "Sobre nosotros", el mismo componente ya
-         construido en la splash page de Spot (título + párrafo editables +
-         galería tipo Pinterest con foto/video) — no una versión nueva más
-         chica. Solo en el panel "antes" — reusa data-panel="before" tal
-         cual.
-         Sobre las fotos: el único asset fotográfico real de 100 Montaditos
-         en este repo es banner-100-montaditos.jpg, y esa imagen trae el
-         texto "El auténtico sabor de España" grabado en la mitad
-         izquierda — cualquier crop que caiga ahí corta el texto de forma
-         rota. Por eso son 4 tiles (no 6), todos recortados sobre la mitad
-         derecha de la imagen (el plato), zona sin texto. En producción
-         cada tile sale de una foto real distinta del set que el comercio
-         sube — igual que en Spot. -->
+    <!-- Secondary card: "About us" block, the same component already
+         built on the Spot welcome splash page (editable title + editable
+         paragraph + Pinterest-style photo/video gallery) — not a smaller
+         new version. Only in the "before" panel — reuses
+         data-panel="before" as-is.
+         About the photos: the only real 100 Montaditos photo asset in
+         this repo is banner-100-montaditos.jpg, and that image has the
+         text "El auténtico sabor de España" baked into the left half —
+         any crop landing there cuts the text in a broken way. That's why
+         there are 4 tiles (not 6), all cropped over the right half of
+         the image (the plate), the text-free zone. In production each
+         tile comes from a different real photo in the set the business
+         uploads — same as on Spot. -->
     <div class="az-cell az-cell--intro" data-panel="before">
       <div class="az-card">
         <h3 class="intro-title">Sobre nosotros</h3>
@@ -362,8 +362,8 @@
       </div>
     </div>
 
-    <!-- Dirección + mapa + horario: card de cierre, siempre visible
-         (mismo criterio que el cupón: no depende del flujo de validación). -->
+    <!-- Address + map + hours: closing card, always visible
+         (same rule as the coupon: doesn't depend on the claim flow). -->
     <div class="az-cell az-cell--location">
       <div class="az-card">
         <h3 class="location-title">Dónde encontrarnos</h3>

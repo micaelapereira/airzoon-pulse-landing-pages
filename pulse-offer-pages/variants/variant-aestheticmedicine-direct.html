@@ -10,14 +10,14 @@
 <link rel="stylesheet" href="../shared/tokens.css?v=3">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=23">
 <style>
-  /* ---- Minimal Direct — Aesthetic Medicine (reskin de 100 Montaditos) ----
-     Mismo shell, mismos bloques Pulse (cupón, conexión, ubicación) — lo
-     único que cambia es el reskin de marca: fondo plano color arcilla en
-     vez de foto oscura (banner-spa.jpg no trae texto grabado, así que no
-     hace falta el formula de zoom en 2 escalones que usa 100 Montaditos
-     para esquivarlo), logo circular con su propio recorte, accent marrón
-     chocolate. Copy reescrita para lo que un med-spa ofrece de verdad
-     (diagnóstico gratis), no un find-replace del nombre del negocio. */
+  /* ---- Minimal Direct — Aesthetic Medicine (reskin of 100 Montaditos) ----
+     Same shell, same Pulse blocks (coupon, connect, location) — the only
+     thing that changes is the brand reskin: flat clay-colored background
+     instead of a dark photo (banner-spa.jpg has no baked-in text, so it
+     doesn't need the 2-step zoom formula 100 Montaditos uses to dodge
+     it), circular logo with its own crop, chocolate-brown accent. Copy
+     rewritten for what a med-spa actually offers (free diagnosis), not a
+     find-replace of the business name. */
   :root{
     --text-color: #232323;
     --primary-color: #5C3D2E;
@@ -41,13 +41,12 @@
     --card-pad-top: 96px;
   }
 
-  /* Fondo plano color arcilla, sin imagen de textura detrás. */
+  /* Flat clay-colored background, no texture image behind it. */
   body{ background: #D5C1AC; }
   .az-powered-by{ color: rgba(26,26,26,.4); }
 
-  /* Sin texto grabado en la foto (a diferencia del banner de 100
-     Montaditos) — un solo zoom por altura alcanza, sin reposicionar por
-     breakpoint. */
+  /* No baked-in text on the photo (unlike the 100 Montaditos banner) — a
+     single height-based zoom is enough, no repositioning per breakpoint. */
   .az-hero-photo{
     height: var(--hero-h);
     background: url('../assets/banner-spa.jpg') center 85% / auto 145% no-repeat;
@@ -61,10 +60,10 @@
     width:var(--badge-d); height:var(--badge-d); overflow:hidden; padding:0; background:#fff; border:none;
     box-shadow: 0 8px 24px rgba(0,0,0,.18);
   }
-  /* El wordmark circular original trae mucho margen blanco alrededor —
-     object-fit:cover solo no alcanza porque el margen forma parte de la
-     misma imagen (no es un problema de proporción). Escalar la imagen
-     recorta ese margen y deja el wordmark llenando el badge. */
+  /* The original circular wordmark has a lot of white margin around it —
+     object-fit:cover alone isn't enough because the margin is part of
+     the same image (not an aspect-ratio problem). Scaling the image up
+     crops that margin out and leaves the wordmark filling the badge. */
   .az-logo-badge img{ width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.35); }
 
   .offer-stack{ max-width: 600px; margin: 0 auto; padding: 0 20px 48px; }
@@ -86,8 +85,8 @@
     }
   }
 
-  /* ---- Pantallas chicas y bajas (iPhone SE y similares) — mismo fix
-     que 100 Montaditos, no es cosa de marca. ---- */
+  /* ---- Small, short screens (iPhone SE and similar) — same fix as
+     100 Montaditos, not a brand-specific thing. ---- */
   @media (max-height: 700px){
     :root{
       --hero-h: 240px;
@@ -228,7 +227,7 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "ANTES" — acción principal de la página ============ -->
+        <!-- ============ "BEFORE" PANEL — the page's main action ============ -->
         <div data-panel="before">
 
           <div data-offer-panel="whatsapp">
@@ -277,13 +276,13 @@
           </div>
         </div>
 
-        <!-- ============ PANEL "DESPUÉS" — acción principal ya validada ============ -->
+        <!-- ============ "AFTER" PANEL — main action already claimed ============ -->
         <div data-panel="after">
           <h2 class="confirm-title">¡Listo! Ya tenés tu turno</h2>
           <p class="confirm-desc">Te esperamos para tu diagnóstico facial sin cargo.</p>
         </div>
 
-        <!-- ============ PANEL "CADUCADA" — la oferta ya venció ============ -->
+        <!-- ============ "EXPIRED" PANEL — the offer has lapsed ============ -->
         <div data-panel="expired">
           <p class="offer-expired-eyebrow">Oferta finalizada</p>
           <h2 class="offer-expired-title">Esta oferta ya no está disponible</h2>
@@ -293,10 +292,10 @@
       </div>
     </div>
 
-    <!-- Cupón airZoon: card propia, separada de la card de oferta a
-         propósito — es identidad de airZoon, no del comercio, y tiene que
-         leerse como algo distinto, no como "más contenido" pegado abajo.
-         Siempre visible, no depende del flujo de validación. -->
+    <!-- airZoon coupon: its own card, kept separate from the offer card
+         on purpose — it's airZoon's identity, not the business's, and it
+         has to read as something distinct, not "more content" tacked on
+         below. Always visible, doesn't depend on the claim flow. -->
     <div class="az-cell az-cell--coupon">
       <div class="az-coupon">
         <span class="az-coupon-icon">
@@ -318,10 +317,9 @@
       </div>
     </div>
 
-    <!-- Dirección + horario: card de cierre, siempre visible (mismo
-         criterio que el cupón: no depende del flujo de validación). Un
-         solo local — a diferencia de 100 Montaditos, acá no hay 2
-         sucursales. -->
+    <!-- Address + hours: closing card, always visible (same rule as the
+         coupon: doesn't depend on the claim flow). Single location —
+         unlike 100 Montaditos, there aren't 2 branches here. -->
     <div class="az-cell az-cell--location">
       <div class="az-card">
         <h3 class="location-title">Dónde encontrarnos</h3>

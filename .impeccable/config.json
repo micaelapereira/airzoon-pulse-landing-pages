@@ -38,6 +38,15 @@
         ],
         "createdAt": "2026-09-15T20:24:58.625Z",
         "reason": "dead placeholder value: this base :root block is a generic fallback (comment says placeholder brand 'Panaderia Aurora') never rendered as-is — both real variants (100 Montaditos, Aesthetic Medicine) override --headline-font-family to Manrope in their own per-file :root, confirmed via grep across the project"
+      },
+      {
+        "rule": "overused-font",
+        "value": "fraunces",
+        "files": [
+          "pulse-offer-pages/shared/tokens.css"
+        ],
+        "createdAt": "2026-09-15T20:34:42.122Z",
+        "reason": "dead placeholder value: this base :root block is a generic fallback (comment says placeholder brand 'Panaderia Aurora') never rendered as-is — all 6 real variants (100 Montaditos, Aesthetic Medicine) override --headline-font-family to Manrope in their own per-file :root, confirmed via grep across the project; same case already sanctioned in the sibling pulse-booking-pages/shared/tokens.css"
       }
     ]
   }
