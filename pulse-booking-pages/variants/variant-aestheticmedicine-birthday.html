@@ -93,7 +93,13 @@
     .offer-card-primary .az-card{ padding-bottom: var(--block-padding); }
   }
 
-  .offer-title{ font-size:32px; font-weight:800; letter-spacing:-0.01em; text-align:center; margin-top:10px; }
+  .offer-title{ font-size:32px; font-weight:800; letter-spacing:-0.01em; text-align:center; margin-top:10px; margin-bottom:20px; }
+  /* Placed after the base rule on purpose (same source-order tie-break as
+     .offer-gift-photo above): an earlier media-query rule of equal
+     specificity loses to this later one regardless of viewport. */
+  @media (max-height: 700px){
+    .offer-title{ margin-bottom:6px; }
+  }
   .offer-title .accent{ color: var(--primary-color); }
   .offer-gift-photo{
     width:100%; aspect-ratio: 16 / 10; object-fit:cover;
