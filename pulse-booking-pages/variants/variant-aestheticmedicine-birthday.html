@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=2">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=29">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=30">
 <style>
   /* ---- Cumpleaños — reskin de 100 Montaditos, mismo shell y tokens.
      Encaja de forma natural con este arquetipo: es exactamente el "spa
@@ -78,17 +78,16 @@
 
   @media (max-height: 700px){
     :root{
-      --hero-h: 186px;
+      --hero-h: 205px;
       --badge-d: 76px;
       --card-overlap: 40px;
-      --card-pad-top: 36px;
+      --card-pad-top: 40px;
     }
     .offer-title{ font-size:22px; margin-top:0; margin-bottom:6px; }
     .offer-desc{ font-size:13px; line-height:1.4; margin-bottom:6px; }
     .offer-companion{ font-size:12.5px; margin-bottom:10px; }
     .offer-cta-list{ gap:8px; }
     :root{ --cta-button-padding-y: 13px; }
-    .offer-expiry{ margin-top:6px; padding:8px; }
     .az-terms-link{ margin-top:8px; padding:9px 12px; }
     .offer-card-primary .az-card{ padding-bottom: var(--block-padding); }
   }
@@ -118,11 +117,6 @@
   .confirm-desc{ text-align:center; }
   .offer-expired-title{ text-align:center; }
   .offer-expired-desc{ text-align:center; }
-
-  .offer-expiry{
-    background: none; border: none;
-    color: #55524B; font-weight:600; letter-spacing:.01em; text-align:center;
-  }
 
   /* ---- Top controls: language switcher (left) + airZoon mark (right) ---- */
   .az-cell--controls{ justify-content:space-between; align-items:flex-start; }
@@ -181,16 +175,9 @@
     <button data-incentive-style="note" aria-pressed="true">Note</button>
     <button data-incentive-style="duotone" aria-pressed="false">Duotone</button>
   </div>
-  <div class="group" role="group" aria-label="Validity emphasis">
-    <span class="group-label">Emphasis:</span>
-    <button data-validity-style="plain" aria-pressed="false">Plain</button>
-    <button data-validity-style="top" aria-pressed="true">Top badge</button>
-    <button data-validity-style="strip" aria-pressed="false">Strip</button>
-    <button data-validity-style="tag" aria-pressed="false">Above button</button>
-  </div>
 </div>
 
-<div class="splash-page-container" data-flow-state="before" data-offer-status="active" data-incentive-style="note" data-validity-style="top">
+<div class="splash-page-container" data-flow-state="before" data-offer-status="active" data-incentive-style="note">
 
   <div class="az-cell--controls">
     <div class="az-lang-wrap">
@@ -221,37 +208,18 @@
         <!-- ============ PANEL "ANTES" — reservar el regalo ============ -->
         <div data-panel="before">
 
-          <div class="validity-top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <span>Válido todo el mes</span>
-          </div>
-
           <h2 class="offer-title">¡Feliz cumple, <span class="accent">Valentina</span>!</h2>
-          <p class="offer-desc">Te regalamos una limpieza facial gratis, nuestro regalo para vos este mes.</p>
+          <p class="offer-desc">Te regalamos una limpieza facial gratis, nuestro regalo para vos. Válido durante todo el mes.</p>
           <img class="offer-gift-photo" src="../assets/gift-aestheticmedicine.jpg" alt="Limpieza facial de regalo">
-
-          <div class="validity-strip">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            <div>
-              <strong>Vale todo el mes</strong>
-              <span>No se pierde si estás ocupada ese día.</span>
-            </div>
-          </div>
 
           <p class="offer-companion">Traé a quien quieras: tu acompañante también puede sumarse a su propio tratamiento.</p>
 
           <div class="offer-cta-list">
-            <div class="validity-tag">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <span>Todo el mes</span>
-            </div>
             <a class="cta-button" href="https://wa.me/18094702200?text=Hola%2C%20quiero%20reservar%20mi%20regalo%20de%20cumplea%C3%B1os" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
               <span class="cta-main">Reservar mi regalo por WhatsApp<span class="cta-sub">Te confirmamos tu turno</span></span>
             </a>
           </div>
-
-          <p class="offer-expiry">Válido durante todo el mes</p>
 
           <a class="az-terms-link" href="#">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
@@ -331,7 +299,7 @@
 
 </div>
 
-<script src="../shared/preview-bar.js?v=4"></script>
+<script src="../shared/preview-bar.js?v=5"></script>
 
 </body>
 </html>
