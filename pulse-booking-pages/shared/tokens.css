@@ -169,13 +169,16 @@ img{ max-width:100%; display:block; }
 }
 
 /* ---- Offer CTA button — theming mirrors the real Connect-WiFi button ----
-   Reserva (regalo de cumpleaños): ícono de regalo grande + texto alineado
-   a la izquierda, no centrado — el ícono es el foco visual, el texto lo
-   acompaña al lado, no debajo de él. Distinto del CTA de Oferta a
-   propósito (ese sigue centrado con ícono de WhatsApp). */
+   Reserva (regalo de cumpleaños): ícono de regalo grande + bloque de texto
+   de 2 líneas. El conjunto ícono+texto se centra como una sola unidad
+   dentro del botón (justify-content:center en .cta-button) — pero DENTRO
+   de esa unidad, las 2 líneas de texto quedan alineadas a la izquierda
+   contra el ícono (align-items:flex-start en .cta-main), no cada una
+   centrada por separado. Distinto del CTA de Oferta a propósito (ese
+   sigue con ícono de WhatsApp más chico). */
 .cta-button{
   appearance:none; cursor:pointer; width:100%; display:flex;
-  align-items:center; justify-content:flex-start; gap:14px;
+  align-items:center; justify-content:center; gap:14px;
   font-family: var(--font-body);
   font-size: 15.5px; font-weight: var(--cta-button-font-weight);
   padding: var(--cta-button-padding-y) var(--cta-button-padding-x);
