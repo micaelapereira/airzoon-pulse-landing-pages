@@ -8,11 +8,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=1">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=1">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=2">
 <style>
   /* ---- Encuesta — Aesthetic Medicine (reskin of 100 Montaditos) ----
      Same layout, tokens swapped. See the 100 Montaditos file's comment
-     for why there's no hero photo on this archetype. */
+     for the hero-photo/no-Location decisions — identical here. */
   :root{
     --text-color: #232323;
     --primary-color: #5C3D2E;
@@ -31,12 +31,19 @@
     --border: #EAE5DC;
     --text-muted: #746F68;
 
-    --badge-d: 96px;
-    --card-overlap: 44px;
+    --hero-h: 560px;
+    --badge-d: 160px;
+    --card-overlap: 80px;
+    --card-pad-top: 132px;
   }
 
   body{ background: #D5C1AC; }
   .az-powered-by{ color: rgba(26,26,26,.4); }
+
+  .az-hero-photo{
+    height: var(--hero-h);
+    background: url('../assets/banner-spa.jpg') center 85% / auto 145% no-repeat;
+  }
 
   .az-logo-wrap{
     position:absolute; top: calc(-1 * var(--badge-d) / 2); left:50%; transform:translateX(-50%);
@@ -48,23 +55,31 @@
   }
   .az-logo-badge img{ width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.35); }
 
-  .survey-stack{ max-width: 520px; margin: 0 auto; padding: 150px 20px 48px; }
+  .survey-stack{ max-width: 520px; margin: 0 auto; padding: 0 20px 48px; }
   .survey-stack .survey-card-primary{ margin-top: calc(-1 * var(--card-overlap)); position:relative; z-index:2; }
   .survey-card-primary .az-card{
     position:relative;
     box-shadow: 0 12px 34px rgba(0,0,0,.22);
-    padding-top: calc(var(--badge-d) / 2 + 28px);
+    padding-top: var(--card-pad-top);
     padding-bottom: calc(var(--block-padding) + 18px);
   }
 
   @media (max-width: 820px){
-    :root{ --badge-d: 84px; --card-overlap: 36px; }
-    .survey-stack{ padding-top: 120px; }
+    :root{
+      --hero-h: 340px;
+      --badge-d: 96px;
+      --card-overlap: 40px;
+      --card-pad-top: 88px;
+    }
   }
 
   @media (max-height: 700px){
-    :root{ --badge-d: 72px; --card-overlap: 32px; }
-    .survey-stack{ padding-top: 100px; padding-bottom: 32px; }
+    :root{
+      --hero-h: 205px;
+      --badge-d: 76px;
+      --card-overlap: 40px;
+      --card-pad-top: 44px;
+    }
     .survey-question-desc{ margin-bottom: 24px; }
     .survey-card-primary .az-card{ padding-bottom: var(--block-padding); }
   }
@@ -149,6 +164,8 @@
     </div>
     <img class="az-logo-mark" src="../assets/airzoon-pin-mark.png" alt="airZoon">
   </div>
+
+  <div class="az-hero-photo"></div>
 
   <div class="survey-stack">
 
@@ -258,27 +275,10 @@
         </div>
       </div>
 
-      <!-- Address, hours, and how to reach the business directly: one card
-           (same merge as the Giveaway Page — both answer "how do I reach
-           this business"). -->
-      <div class="az-cell az-cell--location">
+      <!-- Connect-with-business: its own card. No Location card on this
+           archetype at all (see the 100 Montaditos file's comment). -->
+      <div class="az-cell az-cell--connect">
         <div class="az-card">
-          <h3 class="location-title">Dónde encontrarnos</h3>
-
-          <div class="location-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <p class="location-name">Piantini</p>
-              <a class="location-phone" href="tel:+18094702200">(809) 470-2200</a>
-              <a class="location-link" href="https://maps.google.com/?q=Piantini+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar ›</a>
-            </div>
-          </div>
-
-          <div class="location-hours-row">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <p class="location-hours">Lunes a sábado, 9:00 a 19:00</p>
-          </div>
-
           <div class="connect-block">
             <div class="connect-card">
               <div class="connect-card-copy">

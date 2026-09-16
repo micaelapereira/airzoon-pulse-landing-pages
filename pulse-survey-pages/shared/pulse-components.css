@@ -177,23 +177,17 @@
 [data-connect="off"] .connect-block{ display:none; }
 [data-connect="on"] .connect-block{ display:block; }
 
-/* ---- Connect block, merged into the Location card (Giveaway Page only) ----
-   Unlike Oferta/Reserva, entering this page's raffle isn't itself a
-   WhatsApp action, so gating "talk to us" behind the after-entering panel
-   put it stacked directly under the share button — two full-width CTAs in
-   a row read as one over-eager screen, not a natural next step. A separate
-   always-visible card was the first fix, but that left 2 small cards
-   ("talk to us" / "find us") both answering the same underlying question
-   — how do I reach this business — so they're merged into one "Dónde
-   encontrarnos" card instead, WhatsApp contact after the hours row, same
-   divider treatment .location-hours-row already uses above it.
-   Overrides connect-block's own margin (tuned for sitting inside a panel,
-   under a terms link) since it's now the last element of the location
-   card, not the sole content of its own. */
-.az-cell--location .connect-block{
-  margin-top:20px; margin-bottom:0;
-  padding-top:20px; border-top:1px solid var(--border);
-}
+/* ---- Connect block — its own card here, not merged into Location ----
+   Unlike the Giveaway Page, this archetype has no Location card at all
+   (see the "no Dónde encontrarnos" note further down): a visitor
+   answering this survey already visited, so a reminder of the address
+   doesn't serve either branch's actual goal (leave a review / report a
+   problem). With nothing to merge into, connect-block's own margin (set
+   above — tuned for sitting inside a panel, under a terms link) is
+   overridden to 0: the card's own padding already gives it room, it's
+   the sole content of its own .az-cell now. */
+.az-cell.az-cell--connect{ margin-top: 16px; }
+.az-cell--connect .connect-block{ margin:0; }
 
 /* ---- Steps: question / result (high / low branch) ----
    data-survey-step and data-survey-branch both live on
@@ -301,32 +295,11 @@
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-color) 16%, transparent);
 }
 
-/* ==========================================================================
-   Address + map + hours — closing card, shown only on the result screens
-   (see the "no promoción" note above — it lives inside the result panels
-   in the HTML, same as coupon/connect).
-   No embedded map on purpose: 100 Montaditos has more than one location
-   (see .location-item, repeatable), and a Google Maps iframe can only
-   center on one point — adding one per location doubles page weight for
-   every branch the business has. Instead each location carries its own
-   "Get directions" link that opens the real map (Maps app on mobile,
-   Google Maps on desktop) — lighter, and it scales to any number of
-   locations without adding requests.
-   ========================================================================== */
-.az-cell--location{ margin-top: 16px; }
-.location-title{ font-size:16px; font-weight:700; color: var(--headline-color); margin:0 0 14px; }
-
-.location-item{ display:flex; align-items:flex-start; gap:10px; }
-.location-item + .location-item{ margin-top:14px; }
-.location-item svg{ width:18px; height:18px; flex-shrink:0; margin-top:2px; color: var(--primary-color); }
-.location-name{ font-size:14px; font-weight:700; color: var(--text-color); margin:0 0 2px; }
-.location-phone{ display:block; font-size:13px; color: var(--text-muted); text-decoration:none; margin-bottom:4px; }
-.location-phone:hover{ text-decoration:underline; }
-.location-link{ font-size:12.5px; font-weight:700; color: var(--primary-color); text-decoration:none; }
-
-.location-hours-row{
-  display:flex; align-items:flex-start; gap:10px;
-  padding-top:14px; margin-top:14px; border-top: 1px solid var(--border);
-}
-.location-hours-row svg{ width:18px; height:18px; flex-shrink:0; margin-top:2px; color: var(--primary-color); }
-.location-hours{ font-size:14px; color: var(--text-color); margin:0; line-height:1.4; }
+/* ---- No "Dónde encontrarnos" card on this archetype ----
+   Every sibling archetype closes with address + hours; this one doesn't.
+   Someone answering this survey already visited — an address reminder
+   doesn't serve either branch's actual goal (leave a public review, or
+   report a problem to the manager). Micaela confirmed dropping it rather
+   than keeping it as a "just in case" reminder. Connect-with-business
+   stays (its own card, see above) since it's a real second channel for
+   either branch, not location info. */
