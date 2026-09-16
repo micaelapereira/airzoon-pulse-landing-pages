@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>airZoon — Giveaway Page · Aesthetic Medicine (Sorteo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared/tokens.css?v=1">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=1">
+<style>
+  /* ---- Giveaway (Sorteo) — Aesthetic Medicine (reskin of 100 Montaditos) ----
+     Same layout, tokens swapped. The hero photo is the prize itself (the
+     facial being applied in the shot IS the raffle prize), same reasoning
+     as the 100 Montaditos file — see its comment for why. */
+  :root{
+    --text-color: #232323;
+    --primary-color: #5C3D2E;
+    --headline-color: #1A1A1A;
+    --headline-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --card-background-color: #FFFFFF;
+    --block-border-radius: 0px;
+    --element-border-radius: 10px;
+    --block-padding: 40px;
+
+    --cta-button-bg: #5C3D2E;
+    --cta-button-radius: 10px;
+    --cta-button-font-weight: 700;
+
+    --surface-muted: #F7F3ED;
+    --border: #EAE5DC;
+    --text-muted: #746F68;
+
+    --hero-h: 560px;
+    --badge-d: 160px;
+    --card-overlap: 80px;
+    --card-pad-top: 132px;
+  }
+
+  body{ background: #D5C1AC; }
+  .az-powered-by{ color: rgba(26,26,26,.4); }
+
+  .az-hero-photo{
+    height: var(--hero-h);
+    background: url('../assets/gift-aestheticmedicine.jpg') center 30% / cover no-repeat;
+  }
+
+  .az-logo-wrap{
+    position:absolute; top: calc(-1 * var(--badge-d) / 2); left:50%; transform:translateX(-50%);
+    z-index:3;
+  }
+  .az-logo-badge{
+    width:var(--badge-d); height:var(--badge-d); overflow:hidden; padding:0; background:#fff; border:none;
+    box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  }
+  .az-logo-badge img{ width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.35); }
+
+  .offer-stack{ max-width: 600px; margin: 0 auto; padding: 0 20px 48px; }
+  .offer-cta-list{ display:flex; flex-direction:column; gap:10px; }
+
+  .offer-stack .offer-card-primary{ margin-top: calc(-1 * var(--card-overlap)); position:relative; z-index:2; }
+  .offer-card-primary .az-card{
+    position:relative;
+    box-shadow: 0 12px 34px rgba(0,0,0,.22);
+    padding-top: var(--card-pad-top);
+    padding-bottom: calc(var(--block-padding) + 18px);
+  }
+
+  @media (max-width: 820px){
+    :root{
+      --hero-h: 340px;
+      --badge-d: 96px;
+      --card-overlap: 40px;
+      --card-pad-top: 88px;
+    }
+    .az-hero-photo{ background-position: center 25%; }
+  }
+
+  @media (max-height: 700px){
+    :root{
+      --hero-h: 205px;
+      --badge-d: 76px;
+      --card-overlap: 40px;
+      --card-pad-top: 44px;
+    }
+    .offer-desc{ font-size:13.5px; line-height:1.45; margin-bottom:14px; }
+    .offer-countdown{ margin-top:10px; margin-bottom:14px; }
+    .giveaway-form{ gap:10px; margin: 4px 0 14px; }
+    .az-terms-link, .az-disclosure summary{ margin-top:8px; padding:9px 12px; }
+    .offer-card-primary .az-card{ padding-bottom: var(--block-padding); }
+  }
+
+  .offer-title{ font-size:32px; font-weight:800; letter-spacing:-0.01em; text-align:center; margin-top:10px; margin-bottom:32px; }
+  /* Placed after the base rule on purpose (source-order tie-break): see the
+     .offer-gift-photo comment on the Booking Page files for why. */
+  @media (max-height: 700px){
+    .offer-title{ font-size:24px; margin-top:0; margin-bottom:8px; }
+  }
+  .offer-title .accent{ color: var(--primary-color); }
+  .offer-desc{ text-align:center; margin-bottom:28px; padding:0 28px; }
+  .confirm-title{ text-align:center; color: var(--primary-color); }
+  .confirm-desc{ text-align:center; padding:0 28px; }
+  .offer-expired-title{ text-align:center; }
+  .offer-expired-desc{ text-align:center; padding:0 28px; }
+
+  /* ---- Top controls: language switcher (left) + airZoon mark (right) ---- */
+  .az-cell--controls{ justify-content:space-between; align-items:flex-start; }
+  .az-logo-mark{ height:60px; width:auto; display:block; }
+
+  .az-lang-wrap{ position:relative; }
+  .az-lang{
+    width:44px; height:44px; border-radius:50%;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(4px);
+    border:none; cursor:pointer; font-size:19px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 2px 10px rgba(0,0,0,.12);
+  }
+  .az-lang-dropdown{
+    position:absolute; top:52px; left:0; z-index:10;
+    background:#fff; border-radius:12px; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    padding:6px; min-width:168px;
+  }
+  .az-lang-dropdown[hidden]{ display:none; }
+  .az-lang-option{
+    display:flex; align-items:center; gap:10px; width:100%;
+    padding:9px 10px; border:none; background:none; cursor:pointer;
+    border-radius:8px; font-size:14px; color:#232323; text-align:left;
+    font-family: var(--font-body);
+  }
+  .az-lang-option:hover{ background: var(--surface-muted); }
+  .az-lang-option .flag{ font-size:16px; }
+  .az-lang-option .check{ margin-left:auto; color: var(--primary-color); font-weight:700; opacity:0; }
+  .az-lang-option[aria-selected="true"] .check{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div class="preview-bar">
+  <strong>Preview controls</strong><span>— not part of the design, review only</span>
+  <a class="button-link" href="index.html">All variants</a>
+  <div class="spacer"></div>
+  <div class="group" role="group" aria-label="Variant">
+    <select id="variant-nav" aria-label="Switch variant">
+      <option value="variant-100montaditos-sorteo.html">100 Montaditos</option>
+      <option value="variant-aestheticmedicine-sorteo.html" selected>Aesthetic Medicine</option>
+    </select>
+  </div>
+  <div class="group" role="group" aria-label="Flow">
+    <span class="group-label">Flow:</span>
+    <button data-flow-state="before" aria-pressed="true">Before entering</button>
+    <button data-flow-state="after" aria-pressed="false">After entering</button>
+  </div>
+  <div class="group" role="group" aria-label="Connect">
+    <span class="group-label">Connect:</span>
+    <button data-connect="off" aria-pressed="true">Off</button>
+    <button data-connect="on" aria-pressed="false">On</button>
+  </div>
+  <div class="group" role="group" aria-label="Validity">
+    <span class="group-label">Validity:</span>
+    <button data-offer-status="active" aria-pressed="true">Active</button>
+    <button data-offer-status="expired" aria-pressed="false">Expired</button>
+  </div>
+  <div class="group" role="group" aria-label="Coupon">
+    <span class="group-label">Coupon:</span>
+    <button data-incentive-style="note" aria-pressed="true">Note</button>
+    <button data-incentive-style="duotone" aria-pressed="false">Duotone</button>
+  </div>
+  <div class="group" role="group" aria-label="Connect style">
+    <span class="group-label">Connect style:</span>
+    <button data-connect-style="tint" aria-pressed="true">Tint</button>
+    <button data-connect-style="stripe" aria-pressed="false">Stripe</button>
+    <button data-connect-style="ghost" aria-pressed="false">Ghost</button>
+  </div>
+</div>
+
+<div class="splash-page-container" data-flow-state="before" data-offer-status="active" data-incentive-style="note" data-connect="off" data-connect-style="tint">
+
+  <div class="az-cell--controls">
+    <div class="az-lang-wrap">
+      <button class="az-lang" id="lang-trigger" aria-haspopup="listbox" aria-expanded="false">🇪🇸</button>
+      <div class="az-lang-dropdown" id="lang-dropdown" role="listbox" hidden>
+        <button class="az-lang-option" role="option" aria-selected="true"><span class="flag">🇪🇸</span> Español <span class="check">✓</span></button>
+        <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇬🇧</span> English <span class="check">✓</span></button>
+        <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇫🇷</span> Français <span class="check">✓</span></button>
+        <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇩🇪</span> Deutsch <span class="check">✓</span></button>
+      </div>
+    </div>
+    <img class="az-logo-mark" src="../assets/airzoon-pin-mark.png" alt="airZoon">
+  </div>
+
+  <div class="az-hero-photo"></div>
+
+  <div class="offer-stack">
+
+    <div class="az-cell az-cell--offer offer-card-primary">
+      <div class="az-card">
+
+        <div class="az-logo-wrap">
+          <div class="az-logo-badge">
+            <img src="../assets/Aesthetic-Medicine-logo.png" alt="Aesthetic Medicine">
+          </div>
+        </div>
+
+        <!-- ============ "BEFORE" PANEL — enter the giveaway ============ -->
+        <div data-panel="before">
+
+          <h2 class="offer-title">Facial premium, <span class="accent">gratis</span></h2>
+          <p class="offer-desc">Participá y podés ganar un facial premium de firma en Aesthetic Medicine.</p>
+
+          <div class="offer-countdown" data-countdown="2026-10-01T23:59:00">
+            <p class="offer-countdown-label">Sorteo cierra en</p>
+            <div class="offer-countdown-timer">
+              <div class="offer-countdown-unit"><span data-countdown-unit="hours">00</span><small>hs</small></div>
+              <div class="offer-countdown-unit"><span data-countdown-unit="minutes">00</span><small>min</small></div>
+              <div class="offer-countdown-unit"><span data-countdown-unit="seconds">00</span><small>seg</small></div>
+            </div>
+          </div>
+
+          <form class="giveaway-form" data-giveaway-form novalidate>
+            <div class="giveaway-field">
+              <label class="giveaway-field-label" for="gw-name-2">Nombre completo</label>
+              <input class="giveaway-field-input" type="text" id="gw-name-2" name="name" placeholder="Tu nombre" required>
+            </div>
+            <div class="giveaway-field">
+              <label class="giveaway-field-label" for="gw-whatsapp-2">WhatsApp</label>
+              <input class="giveaway-field-input" type="tel" id="gw-whatsapp-2" name="whatsapp" placeholder="Para avisarte si ganás" required>
+            </div>
+            <div class="giveaway-field">
+              <label class="giveaway-field-label" for="gw-email-2">Email <span class="optional">(opcional)</span></label>
+              <input class="giveaway-field-input" type="email" id="gw-email-2" name="email" placeholder="tu@email.com">
+            </div>
+            <div class="giveaway-field">
+              <label class="giveaway-field-label" for="gw-instagram-2">Instagram <span class="optional">(opcional)</span></label>
+              <input class="giveaway-field-input" type="text" id="gw-instagram-2" name="instagram" placeholder="@tuusuario">
+            </div>
+
+            <details class="az-disclosure">
+              <summary>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                Ver bases del sorteo
+                <span class="chev">›</span>
+              </summary>
+              <div class="az-disclosure-body">
+                <p>Sorteo válido para residentes de República Dominicana mayores de 18 años. El ganador se selecciona al azar entre los participantes registrados antes del cierre, y se contacta por WhatsApp dentro de las 48 horas posteriores. El premio no es transferible ni canjeable por dinero en efectivo. Participar implica aceptar estas bases.</p>
+              </div>
+            </details>
+
+            <label class="giveaway-checkbox">
+              <input type="checkbox" required>
+              <span>Acepto las bases del sorteo</span>
+            </label>
+
+            <div class="offer-cta-list">
+              <button type="submit" class="cta-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8"/><path d="M16.5 8a2.5 2.5 0 0 0 0-5C13 3 12 8 12 8"/></svg>
+                <span class="cta-main">Participar<span class="cta-sub">Es gratis y toma 1 minuto</span></span>
+              </button>
+            </div>
+          </form>
+
+        </div>
+
+        <!-- ============ "AFTER" PANEL — already entered ============ -->
+        <div data-panel="after">
+          <h2 class="confirm-title">¡Ya estás participando!</h2>
+          <p class="confirm-desc">Te avisamos por WhatsApp si ganás. ¡Mucha suerte!</p>
+
+          <div class="offer-cta-list">
+            <a class="cta-button" href="https://wa.me/?text=Estoy%20participando%20en%20el%20sorteo%20de%20un%20facial%20premium%20gratis%20en%20Aesthetic%20Medicine%2C%20particip%C3%A1%20vos%20tambi%C3%A9n" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
+              <span class="cta-main">Compartir con amigos<span class="cta-sub">Invitalos a participar</span></span>
+            </a>
+          </div>
+
+          <div class="connect-block">
+            <div class="connect-card">
+              <div class="connect-card-copy">
+                <p class="connect-card-title">Hablar con Aesthetic Medicine</p>
+                <p class="connect-card-desc">Consultas sobre el sorteo.</p>
+              </div>
+              <a class="connect-card-btn" href="https://wa.me/18094702200?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20sorteo" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
+                <span>Enviar un mensaje</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ "EXPIRED" PANEL — the giveaway has closed ============ -->
+        <div data-panel="expired">
+          <p class="offer-expired-eyebrow">Sorteo cerrado</p>
+          <h2 class="offer-expired-title">Este sorteo ya cerró</h2>
+          <p class="offer-expired-desc">Seguí atento a tu WhatsApp: pronto viene el próximo sorteo de Aesthetic Medicine.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- airZoon coupon: its own card, kept separate from the offer card
+         on purpose — it's airZoon's identity, not the business's.
+         Always visible, doesn't depend on the entry flow. -->
+    <div class="az-cell az-cell--coupon">
+      <div class="az-coupon">
+        <span class="az-coupon-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <div class="az-coupon-body">
+          <div class="az-coupon-top">
+            <p class="az-coupon-title">Cupón airZoon de conexión</p>
+            <p class="az-coupon-desc">Es tuyo, sin costo: conectate <strong>5x más rápido</strong> la próxima vez que estés en un local con airZoon.</p>
+          </div>
+          <div class="az-coupon-code-row">
+            <span class="az-coupon-code-label">
+              <p class="az-coupon-code-eyebrow">Tu código</p>
+              <span class="az-coupon-code">AZFAST-8H3K</span>
+            </span>
+            <button class="az-coupon-copy-btn" data-copy-coupon="AZFAST-8H3K">Copiar código</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address + hours: same real data as the sibling archetypes. -->
+    <div class="az-cell az-cell--location">
+      <div class="az-card">
+        <h3 class="location-title">Dónde encontrarnos</h3>
+
+        <div class="location-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <p class="location-name">Piantini</p>
+            <a class="location-phone" href="tel:+18094702200">(809) 470-2200</a>
+            <a class="location-link" href="https://maps.google.com/?q=Piantini+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar ›</a>
+          </div>
+        </div>
+
+        <div class="location-hours-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <p class="location-hours">Lunes a sábado, 9:00 a 19:00</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="az-powered-by">Powered by airZoon</p>
+
+</div>
+
+<script src="../shared/preview-bar.js?v=1"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    function pad(n){ return String(n).padStart(2, "0"); }
+    document.querySelectorAll("[data-countdown]").forEach(function(el){
+      var target = new Date(el.getAttribute("data-countdown")).getTime();
+      if (isNaN(target) || target < Date.now()) {
+        target = Date.now() + 3 * 3600 * 1000;
+      }
+      var hEl = el.querySelector('[data-countdown-unit="hours"]');
+      var mEl = el.querySelector('[data-countdown-unit="minutes"]');
+      var sEl = el.querySelector('[data-countdown-unit="seconds"]');
+      function tick(){
+        var diff = Math.max(0, target - Date.now());
+        var totalSeconds = Math.floor(diff / 1000);
+        hEl.textContent = pad(Math.floor(totalSeconds / 3600));
+        mEl.textContent = pad(Math.floor((totalSeconds % 3600) / 60));
+        sEl.textContent = pad(totalSeconds % 60);
+        if (diff <= 0) clearInterval(interval);
+      }
+      tick();
+      var interval = setInterval(tick, 1000);
+    });
+  });
+</script>
+
+</body>
+</html>

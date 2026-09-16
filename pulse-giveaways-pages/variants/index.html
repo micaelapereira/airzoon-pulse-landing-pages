@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>airZoon Pulse — Giveaway Page · variants</title>
+<style>
+  :root{
+    --color-primary: #E0401C; --color-primary-hover: #C23217; --color-accent: #D99016; --color-success: #22C55E;
+    --surface-0: #F4F4F5; --surface-1: #F9FAFB; --surface-2: #FFFFFF; --border: #E8E8EA;
+    --text-primary: #18181B; --text-secondary: #52525B; --text-muted: #A1A1AA;
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0; background: var(--surface-0); color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page-header{ display:flex; flex-direction:column; align-items:flex-start; gap:24px; padding: 28px 40px 0; max-width: 900px; margin:0 auto; }
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; width:fit-content;
+    font-size:13px; font-weight:600; color: var(--text-secondary);
+    text-decoration:none; padding:6px 12px; border-radius:999px;
+    border:1px solid var(--border); background: var(--surface-2);
+  }
+  .back-link:hover{ border-color: var(--color-primary); color: var(--color-primary); }
+  .brand-logo{ height:88px; width:auto; display:block; }
+  main{ max-width: 900px; margin: 0 auto; padding: 32px 40px 96px; }
+  h1{ font-size: clamp(24px, 3vw, 30px); font-weight:700; margin:0 0 12px; }
+  .intro p{ font-size:14.5px; color: var(--text-secondary); line-height:1.65; max-width:66ch; margin:0 0 8px; }
+  .brand-section{ margin-top: 36px; }
+  .brand-section h2{ font-size:15px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color: var(--text-secondary); margin:0 0 14px; }
+  .card-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; }
+  .variant-card{
+    display:flex; flex-direction:column; gap:10px;
+    background: var(--surface-2); border:1px solid var(--border); border-radius:6px; padding: 22px; text-decoration:none;
+  }
+  .variant-card:hover{ border-color: var(--color-primary); }
+  .variant-card h3{ font-size:16.5px; font-weight:600; color: var(--text-primary); margin:0; }
+  .variant-card p{ font-size:13px; color: var(--text-secondary); line-height:1.55; margin:0; }
+  .variant-card .go{ font-size:13px; font-weight:600; color: var(--color-primary); margin-top:auto; padding-top:4px; }
+  @media (max-width: 780px){
+    .card-grid{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px){
+    .page-header{ padding: 24px 24px 0; }
+    main{ padding: 24px 24px 72px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="page-header">
+    <img class="brand-logo" src="../assets/airzoon-logo.png" alt="airZoon">
+    <a class="back-link" href="../../index.html">← All landing pages</a>
+  </header>
+
+  <main>
+    <div class="intro">
+      <h1>Pulse — Giveaway Page: layout variants</h1>
+      <p>Archetype 3 of 5 in the Pulse campaign landing pages. Destination page for a raffle campaign: the prize photographed and named at the very top, a countdown to close, a 4-field entry form, the raffle terms in an inline disclosure, and a WhatsApp share button once entered. Shown with the 2 example brands: 100 Montaditos (dark) and Aesthetic Medicine (light).</p>
+    </div>
+
+    <div class="brand-section">
+      <h2>100 Montaditos</h2>
+      <div class="card-grid">
+        <a class="variant-card" href="variant-100montaditos-sorteo.html">
+          <h3>Sorteo</h3>
+          <p>Free dinner for 4, countdown to close, entry form, share on WhatsApp once entered.</p>
+          <span class="go">View →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="brand-section">
+      <h2>Aesthetic Medicine</h2>
+      <div class="card-grid">
+        <a class="variant-card" href="variant-aestheticmedicine-sorteo.html">
+          <h3>Sorteo</h3>
+          <p>Free premium facial, countdown to close, entry form, share on WhatsApp once entered.</p>
+          <span class="go">View →</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
