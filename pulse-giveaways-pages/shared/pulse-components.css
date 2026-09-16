@@ -384,10 +384,10 @@
    before the user even starts typing. ---- */
 .giveaway-form-heading{
   font-size:19px; font-weight:700; color: var(--headline-color);
-  font-family: var(--headline-font-family); text-align:center; margin:0 0 12px;
+  font-family: var(--headline-font-family); text-align:center; margin:0 0 16px;
 }
 .giveaway-form-subheading{
-  font-size:13.5px; color: var(--text-muted); text-align:center; margin:0 0 32px;
+  font-size:13.5px; color: var(--text-muted); text-align:center; margin:0 0 40px;
 }
 
 .giveaway-form{ display:flex; flex-direction:column; gap:16px; margin: 0 0 22px; }
