@@ -224,6 +224,20 @@
 [data-connect="off"] .connect-block{ display:none; }
 [data-connect="on"] .connect-block{ display:block; }
 
+/* ---- Connect block, promoted to its own card (Giveaway Page only) ----
+   Unlike Oferta/Reserva, entering this page's raffle isn't itself a
+   WhatsApp action, so gating "talk to us" behind the after-entering panel
+   put it stacked directly under the share button — two full-width CTAs in
+   a row read as one over-eager screen, not a natural next step. Moved to
+   its own always-visible card instead, same rhythm as the coupon/location
+   cards it now sits between — closer to how a real visitor would look for
+   a "questions?" contact regardless of whether they've entered yet.
+   Overrides connect-block's own margin (tuned for sitting inside a panel,
+   under a terms link) since it's now the sole content of its own card. */
+.az-cell.az-cell--connect{ margin-top:16px; }
+.az-cell--connect .connect-block{ margin:0; }
+[data-connect="off"] .az-cell--connect{ display:none; }
+
 /* ---- Panels: before / after claiming / offer expired ----
    data-flow-state and data-offer-status both live on
    .splash-page-container. "Expired" overrides the other two: if the
@@ -234,12 +248,18 @@
 .splash-page-container[data-offer-status="active"][data-flow-state="after"] [data-panel="after"]{ display:block; }
 .splash-page-container[data-offer-status="expired"] [data-panel="expired"]{ display:block; }
 
-.confirm-title{ font-size:26px; margin:20px 0 14px; }
-.confirm-desc{ font-size:15px; line-height:1.55; color: var(--text-color); margin:0 0 6px; }
+/* ---- Confirmation / expired screens — generous spacing (skill §13):
+   these were the tightest text stacks left in the shell (20px/14px/6px),
+   and it showed most right before a CTA button, where a cramped gap
+   reads as two elements colliding rather than a title, a message, then
+   an action. Same scale as .offer-title/.offer-desc now, not a smaller
+   one just because the screen is shorter. ---- */
+.confirm-title{ font-size:26px; margin:10px 0 24px; }
+.confirm-desc{ font-size:15px; line-height:1.55; color: var(--text-color); margin:0 0 32px; }
 
 [data-panel="expired"]{ text-align:center; }
 .offer-expired-eyebrow{ font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color: var(--text-muted); margin:0 0 8px; }
-.offer-expired-title{ font-size:26px; margin:0 0 10px; }
+.offer-expired-title{ font-size:26px; margin:0 0 16px; }
 .offer-expired-desc{ font-size:15px; line-height:1.55; color: var(--text-muted); margin:0; }
 
 /* ==========================================================================

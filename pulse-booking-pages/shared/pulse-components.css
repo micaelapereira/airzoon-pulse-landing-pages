@@ -234,12 +234,18 @@
 .splash-page-container[data-offer-status="active"][data-flow-state="after"] [data-panel="after"]{ display:block; }
 .splash-page-container[data-offer-status="expired"] [data-panel="expired"]{ display:block; }
 
-.confirm-title{ font-size:26px; margin:20px 0 14px; }
-.confirm-desc{ font-size:15px; line-height:1.55; color: var(--text-color); margin:0 0 6px; }
+/* ---- Confirmation / expired screens — generous spacing (skill §13):
+   these were the tightest text stacks left in the shell (20px/14px/6px),
+   and it showed most right before a CTA button, where a cramped gap
+   reads as two elements colliding rather than a title, a message, then
+   an action. Same scale as .offer-title/.offer-desc now, not a smaller
+   one just because the screen is shorter. ---- */
+.confirm-title{ font-size:26px; margin:10px 0 24px; }
+.confirm-desc{ font-size:15px; line-height:1.55; color: var(--text-color); margin:0 0 32px; }
 
 [data-panel="expired"]{ text-align:center; }
 .offer-expired-eyebrow{ font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color: var(--text-muted); margin:0 0 8px; }
-.offer-expired-title{ font-size:26px; margin:0 0 10px; }
+.offer-expired-title{ font-size:26px; margin:0 0 16px; }
 .offer-expired-desc{ font-size:15px; line-height:1.55; color: var(--text-muted); margin:0; }
 
 /* ==========================================================================
