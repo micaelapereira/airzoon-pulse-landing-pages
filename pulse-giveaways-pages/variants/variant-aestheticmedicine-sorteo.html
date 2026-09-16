@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=1">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=2">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=3">
 <style>
   /* ---- Giveaway (Sorteo) — Aesthetic Medicine (reskin of 100 Montaditos) ----
      Same layout, tokens swapped. The hero photo is the prize itself (the
@@ -217,6 +217,9 @@
             </div>
           </div>
 
+          <h3 class="giveaway-form-heading">Así de fácil</h3>
+          <p class="giveaway-form-subheading">Completá tus datos y ya quedás participando.</p>
+
           <form class="giveaway-form" data-giveaway-form novalidate>
             <div class="giveaway-field">
               <label class="giveaway-field-label" for="gw-name-2">Nombre completo</label>
@@ -308,28 +311,11 @@
       </div>
     </div>
 
-    <!-- Connect-with-business: its own always-visible card, not gated
-         behind entering — the entry form isn't itself a WhatsApp action
-         the way the other archetypes' main CTA is, so "talk to us" reads
-         as a natural companion to Location, not a second post-entry CTA. -->
-    <div class="az-cell az-cell--connect">
-      <div class="az-card">
-        <div class="connect-block">
-          <div class="connect-card">
-            <div class="connect-card-copy">
-              <p class="connect-card-title">Hablar con Aesthetic Medicine</p>
-              <p class="connect-card-desc">Consultas sobre el sorteo.</p>
-            </div>
-            <a class="connect-card-btn" href="https://wa.me/18094702200?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20sorteo" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
-              <span>Enviar un mensaje</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Address + hours: same real data as the sibling archetypes. -->
+    <!-- Address, hours, and how to reach the business directly: one card,
+         since both answer the same underlying question ("how do I get in
+         touch"). Connect-with-business sits last, after the hours row —
+         not gated behind entering, since the entry form isn't itself a
+         WhatsApp action the way the other archetypes' main CTA is. -->
     <div class="az-cell az-cell--location">
       <div class="az-card">
         <h3 class="location-title">Dónde encontrarnos</h3>
@@ -346,6 +332,19 @@
         <div class="location-hours-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <p class="location-hours">Lunes a sábado, 9:00 a 19:00</p>
+        </div>
+
+        <div class="connect-block">
+          <div class="connect-card">
+            <div class="connect-card-copy">
+              <p class="connect-card-title">Hablar con Aesthetic Medicine</p>
+              <p class="connect-card-desc">Consultas sobre el sorteo.</p>
+            </div>
+            <a class="connect-card-btn" href="https://wa.me/18094702200?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20sorteo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
+              <span>Enviar un mensaje</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
