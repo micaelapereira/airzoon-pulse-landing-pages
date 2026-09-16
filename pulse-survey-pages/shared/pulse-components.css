@@ -259,26 +259,36 @@
 }
 
 /* ---- High branch — suggested review text, copyable, + link to the
-   business's public profile. The copy button reuses the coupon's copy-
-   button pattern (border-pill, primary-color) instead of inventing a
-   third button style on one page. ---- */
+   business's public profile. Left accent stripe reuses the same
+   border-left pattern .connect-card-copy already uses — a quoted quote
+   reads as "borrowed voice" (this is what YOU could say), so it gets the
+   same visual treatment as a pulled quote, not a plain info box. Quote
+   marks are CSS content (::before/::after), not literal text, so the
+   copy button still copies clean text with no stray curly quotes. ---- */
 .review-suggested{
+  display:flex; flex-direction:column;
   background: var(--surface-muted); border-radius: var(--element-border-radius);
-  padding:16px; margin:0 0 24px;
+  border-left: 3px solid var(--primary-color);
+  padding:18px 20px; margin:0 0 24px;
 }
 .review-suggested-label{
   font-size:11px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
-  color: var(--text-muted); margin:0 0 8px;
+  color: var(--primary-color); margin:0 0 10px;
 }
 .review-suggested-text{
-  font-size:14px; line-height:1.5; color: var(--text-color); margin:0 0 14px;
+  font-size:14px; line-height:1.5; color: var(--text-color); font-style:italic;
+  margin:0 0 16px;
 }
+.review-suggested-text::before{ content:"\201C"; }
+.review-suggested-text::after{ content:"\201D"; }
 .review-suggested-copy-btn{
-  appearance:none; cursor:pointer; width:100%;
+  appearance:none; cursor:pointer; align-self:flex-end;
+  display:inline-flex; align-items:center; gap:7px;
   font-family: var(--font-body); font-size:13px; font-weight:700;
-  padding:10px 14px; border-radius:999px;
+  padding:9px 16px; border-radius:999px;
   border: 1.5px solid var(--primary-color); background:#fff; color: var(--primary-color);
 }
+.review-suggested-copy-btn svg{ width:15px; height:15px; flex-shrink:0; }
 .review-suggested-copy-btn:active{ background: var(--primary-color); color:#fff; }
 
 /* ---- Low branch — free-text feedback + WhatsApp submit. Textarea reuses

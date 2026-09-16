@@ -98,9 +98,14 @@
         if (navigator.clipboard && text) {
           navigator.clipboard.writeText(text).catch(function(){});
         }
-        var prevLabel = btn.textContent;
-        btn.textContent = "¡Copiado!";
-        setTimeout(function(){ btn.textContent = prevLabel; }, 1600);
+        /* Swap only the label span, not the whole button: the button now
+           carries a copy-icon SVG too, and btn.textContent would wipe it. */
+        var label = btn.querySelector(".review-suggested-copy-label");
+        var prevLabel = label ? label.textContent : btn.textContent;
+        if (label) { label.textContent = "¡Copiado!"; } else { btn.textContent = "¡Copiado!"; }
+        setTimeout(function(){
+          if (label) { label.textContent = prevLabel; } else { btn.textContent = prevLabel; }
+        }, 1600);
       });
     });
   }
