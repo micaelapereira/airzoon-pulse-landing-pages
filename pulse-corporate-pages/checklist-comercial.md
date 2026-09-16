@@ -15,7 +15,7 @@ Information the sales team must collect from the client before building their Co
 1. **Header photo** — a real photo of the venue, same as the other archetypes.
 2. **The headline** — the news/launch/event in one short sentence.
 3. **Date and time** — for the highlighted date block and the "save the date" calendar link.
-4. **Gallery photos** — 3 to 6 real photos (of the event, the new space, the launch — not the venue banner reused, which is only a placeholder in this mockup).
+4. **Gallery photos** — 3 to 6 real photos (of the event, the new space, the launch). The mockup uses 5 AI-generated placeholders styled to match each brand — swap them for the client's real photos before this ships.
 5. **Body copy** — 2-3 short paragraphs about what's happening.
 6. **CTA type** — pick ONE per campaign: "Guardar fecha" (opens a Google Calendar event — needs the exact date/time/location text) or "Escribir por WhatsApp" (needs the business's WhatsApp number and a pre-filled message). Not both, not a visitor choice — same mechanism as the Offer Page's WhatsApp/Code pick.
 7. **Locations** — name, phone, and hours for each one. Repeat for more than one branch.
@@ -44,7 +44,7 @@ Datos que el equipo comercial debe pedirle al cliente antes de armar su Página 
 1. **Foto de cabecera** — una foto real del local, igual que en el resto de los arquetipos.
 2. **El titular** — la novedad, lanzamiento o evento en una frase corta.
 3. **Fecha y hora** — para el bloque de fecha destacada y el link de "guardar fecha" en el calendario.
-4. **Fotos de la galería** — de 3 a 6 fotos reales (del evento, el nuevo espacio, el lanzamiento — no la foto del local reusada, que en este mockup es solo un placeholder).
+4. **Fotos de la galería** — de 3 a 6 fotos reales (del evento, el nuevo espacio, el lanzamiento). El mockup usa 5 placeholders generados por IA con el estilo de cada marca — hay que reemplazarlas por las fotos reales del cliente antes de publicar.
 5. **Texto** — 2 a 3 párrafos cortos contando de qué se trata.
 6. **Tipo de botón principal** — elegir UNO por campaña: "Guardar fecha" (abre un evento de Google Calendar — necesita fecha/hora/lugar exactos) o "Escribir por WhatsApp" (necesita el número del negocio y un mensaje precargado). No los dos juntos, no es una elección del visitante — mismo mecanismo que el WhatsApp/Código de la Página Oferta.
 7. **Ubicaciones** — nombre, teléfono y horario de cada local. Se repite si hay más de una sucursal.
