@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=1">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=5">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=6">
 <style>
   /* ---- Giveaway (Sorteo) — 100 Montaditos ----
      Same shell and tokens as the Offer/Booking Pages. The one structural
@@ -173,15 +173,9 @@
     <button data-incentive-style="note" aria-pressed="true">Note</button>
     <button data-incentive-style="duotone" aria-pressed="false">Duotone</button>
   </div>
-  <div class="group" role="group" aria-label="Connect style">
-    <span class="group-label">Connect style:</span>
-    <button data-connect-style="tint" aria-pressed="true">Tint</button>
-    <button data-connect-style="stripe" aria-pressed="false">Stripe</button>
-    <button data-connect-style="ghost" aria-pressed="false">Ghost</button>
-  </div>
 </div>
 
-<div class="splash-page-container" data-flow-state="before" data-offer-status="active" data-incentive-style="note" data-connect="off" data-connect-style="tint">
+<div class="splash-page-container" data-flow-state="before" data-offer-status="active" data-incentive-style="note" data-connect="off">
 
   <div class="az-cell--controls">
     <div class="az-lang-wrap">
@@ -371,7 +365,7 @@
 
 </div>
 
-<script src="../shared/preview-bar.js?v=1"></script>
+<script src="../shared/preview-bar.js?v=2"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function(){
     function pad(n){ return String(n).padStart(2, "0"); }

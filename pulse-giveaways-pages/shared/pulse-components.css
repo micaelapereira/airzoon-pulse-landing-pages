@@ -128,12 +128,11 @@
    It's not duplicated for WhatsApp.
    The WhatsApp icon never carries its fixed green in any style — it
    takes currentColor, so it blends with the accent instead of reading
-   as an imported sticker. 3 treatments via [data-connect-style]:
-   Tint   — horizontal row, outline button, vertical rule next to the text.
-   Stripe — stacked and centered, accent stripe down the block's whole
-            left edge, filled button.
-   Ghost  — horizontal row, its own stroked box (no fill), filled
-            button. ---- */
+   as an imported sticker.
+   Used to offer 3 treatments via [data-connect-style] (Tint/Stripe/
+   Ghost), compared live in the preview bar — user review dropped Stripe
+   and Ghost ("no quedan bien"), so Tint's look is now the only one and
+   lives unconditionally here instead of behind an attribute selector. */
 /* Large top/bottom margin on purpose: the block needs to breathe apart
    from both the terms link above and the card's bottom edge below —
    otherwise it reads as "more content" tacked onto the end instead of a
@@ -144,7 +143,9 @@
 .connect-card{
   display:flex; align-items:center; justify-content:space-between; gap:20px;
 }
-.connect-card-copy{ min-width:0; }
+.connect-card-copy{
+  min-width:0; border-left: 3px solid var(--primary-color); padding: 6px 0 6px 12px;
+}
 .connect-card-title{
   font-size:14px; font-weight:700; color: var(--text-color);
   font-family: var(--headline-font-family); margin:0 0 2px;
@@ -154,71 +155,23 @@
   display:flex; align-items:center; gap:8px; flex-shrink:0;
   font-family: var(--font-body); font-size:13.5px; font-weight:700;
   padding:10px 18px; border-radius:999px; text-decoration:none; white-space:nowrap;
-  background: var(--primary-color); color:#fff; border: 1.5px solid var(--primary-color);
+  background:#fff; color: var(--primary-color); border: 1.5px solid var(--primary-color);
 }
 .connect-card-btn svg{ width:18px; height:18px; flex-shrink:0; color:currentColor; }
 
-/* ---- Narrow mobile: Tint and Ghost are a row (text + button side by
-   side) — on a small screen that squeezes the text against the button
-   and wraps it into 3-4 lines. Stack it: button below, smaller and more
-   proportional (not full width — a full-width button under two lines of
-   text looks heavy). Stripe is already a column on its own (more
-   specific selector, wins anyway without touching it here). ---- */
+/* Narrow mobile: text + button side by side squeezes the text against
+   the button and wraps it into 3-4 lines. Stack it: button below,
+   smaller and more proportional (not full width — a full-width button
+   under two lines of text looks heavy). The side stripe moves from
+   .connect-card-copy to the whole .connect-card so it covers text +
+   button as one block, not just the text. */
 @media (max-width: 480px){
-  .connect-card{ flex-direction:column; align-items:flex-start; gap:14px; }
-  .connect-card-btn{ padding:8px 16px; font-size:13px; }
-}
-
-/* ---- Tint (base) — horizontal row, outline button, with a vertical
-   rule next to the text that overshoots the title+description's height
-   (not clipped exactly to it — otherwise it reads as a plain "border"
-   instead of a decorative accent). This accent used to live on Ghost by
-   mistake; it belongs to Tint. ---- */
-[data-connect-style="tint"] .connect-card-btn{
-  background:#fff; color: var(--primary-color);
-}
-[data-connect-style="tint"] .connect-card-copy{
-  border-left: 3px solid var(--primary-color); padding: 6px 0 6px 12px;
-}
-
-/* Tint stacked on mobile: the side stripe has to cover text + button as
-   one block, not just the text — otherwise the button sits loose outside
-   the accent and the pair doesn't read as a unit. The stripe moves from
-   .connect-card-copy to the whole .connect-card. Placed AFTER Tint's base
-   rule on purpose — same specificity, needs to win by cascade order. */
-@media (max-width: 480px){
-  [data-connect-style="tint"] .connect-card{
+  .connect-card{
+    flex-direction:column; align-items:flex-start; gap:14px;
     border-left: 3px solid var(--primary-color); padding: 6px 0 6px 12px;
   }
-  [data-connect-style="tint"] .connect-card-copy{
-    border-left:none; padding:0;
-  }
-}
-
-/* ---- Stripe — stacked and centered; the stripe runs the full height of
-   the connect block itself (it no longer shares a card with a
-   confirmation message, so there's no need to scale the stripe to
-   anything else). ---- */
-[data-connect-style="stripe"] .connect-block{ position:relative; padding-left:18px; }
-[data-connect-style="stripe"] .connect-block::before{
-  content:""; position:absolute; top:0; bottom:0; left:0; width:4px;
-  background: var(--primary-color);
-}
-[data-connect-style="stripe"] .connect-card{
-  flex-direction:column; align-items:center; text-align:center; gap:16px;
-}
-
-/* ---- Ghost — its real identity: the outer (confirmation) card stays
-   white, it's only the connect ROW that gets its own stroked box — no
-   fill of its own (the white of the card behind shows through), rounded
-   corners, generous padding. It's not the whole card that loses its
-   background (that was an over-correction from an earlier pass) — it's
-   a nested box, the same idea that already existed before the merge, now
-   moved inside the "after" panel instead of being its own az-cell. ---- */
-[data-connect-style="ghost"] .connect-card{
-  background:none; border: 1.5px solid var(--primary-color);
-  border-radius: var(--element-border-radius);
-  padding: 20px 22px;
+  .connect-card-copy{ border-left:none; padding:0; }
+  .connect-card-btn{ padding:8px 16px; font-size:13px; }
 }
 
 [data-connect="off"] .connect-block{ display:none; }
