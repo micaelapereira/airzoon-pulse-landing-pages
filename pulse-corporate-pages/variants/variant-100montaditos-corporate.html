@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=1">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=1">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=2">
 <style>
   /* ---- Corporativa — 100 Montaditos ----
      Same shell/tokens as the other archetypes. Structural notes:
@@ -22,11 +22,11 @@
        "escribir por WhatsApp", a second "talk to us" button would be the
        identical channel offered twice for no distinct reason.
      - Gallery reuses .intro-gallery (Business intro variant's photo
-       grid) — same "not a smaller new version" reasoning as there. Real
-       photo asset in this repo is still just banner-100-montaditos.jpg
-       (with baked-in text on its left half), so every tile crops the
-       text-free right half — production swaps in the business's real
-       event photos, see checklist-comercial.md. */
+       grid) — same "not a smaller new version" reasoning as there. 5
+       distinct photos (not one banner cropped 5 ways), so it reads
+       clearly as "a client supplies their own gallery set" — production
+       swaps these placeholders for the business's real event photos,
+       see checklist-comercial.md. */
   :root{
     --text-color: #232323;
     --primary-color: #CD0A09;

@@ -338,5 +338,8 @@
   padding-top:14px; margin-top:14px; border-top: 1px solid var(--border);
 }
 .location-social-row .az-cell--social{ justify-content:flex-start; padding:0; gap:10px; }
-.location-social-row .az-cell--social a{ width:34px; height:34px; }
+/* Brand accent instead of tokens.css's fixed --text-color (black) — this
+   card is themed per-client everywhere else (coupon, connect, CTA), a
+   black circle here was the one spot still hardcoded to a neutral color. */
+.location-social-row .az-cell--social a{ width:34px; height:34px; background: var(--primary-color); }
 .location-social-row .az-cell--social svg{ width:16px; height:16px; }
