@@ -3,17 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>airZoon — Giveaway Page · Aesthetic Medicine (Sorteo)</title>
+<title>airZoon — Giveaway Page · Aesthetic Medicine (Sorteo — Venue photo)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=1">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=6">
 <style>
-  /* ---- Giveaway (Sorteo) — Aesthetic Medicine (reskin of 100 Montaditos) ----
-     Same layout, tokens swapped. The hero photo is the prize itself (the
-     facial being applied in the shot IS the raffle prize), same reasoning
-     as the 100 Montaditos file — see its comment for why. */
+  /* ---- Giveaway (Sorteo) — Aesthetic Medicine, Venue photo variant ----
+     Same relationship to variant-aestheticmedicine-sorteo.html as the
+     100 Montaditos venue file has to its own sibling — see that file's
+     comment for why. Hero goes back to the spa venue shot; the facial
+     photo moves into the card as .offer-gift-photo, right under the
+     description. */
   :root{
     --text-color: #232323;
     --primary-color: #5C3D2E;
@@ -43,7 +45,7 @@
 
   .az-hero-photo{
     height: var(--hero-h);
-    background: url('../assets/gift-aestheticmedicine.jpg') center 30% / cover no-repeat;
+    background: url('../assets/banner-spa.jpg') center 85% / auto 145% no-repeat;
   }
 
   .az-logo-wrap{
@@ -74,7 +76,6 @@
       --card-overlap: 40px;
       --card-pad-top: 88px;
     }
-    .az-hero-photo{ background-position: center 25%; }
   }
 
   @media (max-height: 700px){
@@ -98,6 +99,20 @@
     .offer-title{ font-size:24px; margin-top:0; margin-bottom:8px; }
   }
   .offer-title .accent{ color: var(--primary-color); }
+
+  .offer-gift-photo{
+    width:100%; aspect-ratio: 16 / 10; object-fit:cover; object-position: center 25%;
+    border-radius: var(--element-border-radius);
+    margin: 18px 0;
+  }
+  /* Placed after the base rule on purpose: a media-query rule earlier in
+     the file loses to a later non-media rule of equal specificity
+     regardless of the media condition — same-specificity ties resolve by
+     source order, not by which one is "more specific" to the viewport. */
+  @media (max-height: 700px){
+    .offer-gift-photo{ aspect-ratio: 16 / 5; margin:8px 0; }
+  }
+
   .offer-desc{ text-align:center; margin-bottom:28px; padding:0 28px; }
   .confirm-title{ text-align:center; color: var(--primary-color); }
   .confirm-desc{ text-align:center; padding:0 28px; }
@@ -147,8 +162,8 @@
         <option value="variant-100montaditos-sorteo-venue.html">Venue photo</option>
       </optgroup>
       <optgroup label="Aesthetic Medicine">
-        <option value="variant-aestheticmedicine-sorteo.html" selected>Prize photo</option>
-        <option value="variant-aestheticmedicine-sorteo-venue.html">Venue photo</option>
+        <option value="variant-aestheticmedicine-sorteo.html">Prize photo</option>
+        <option value="variant-aestheticmedicine-sorteo-venue.html" selected>Venue photo</option>
       </optgroup>
     </select>
   </div>
@@ -207,6 +222,7 @@
 
           <h2 class="offer-title">Facial premium, <span class="accent">gratis</span></h2>
           <p class="offer-desc">Participá y podés ganar un facial premium de firma en Aesthetic Medicine.</p>
+          <img class="offer-gift-photo" src="../assets/gift-aestheticmedicine.jpg" alt="Facial premium de premio">
 
           <div class="offer-countdown" data-countdown="2026-10-01T23:59:00">
             <p class="offer-countdown-label">Sorteo cierra en</p>

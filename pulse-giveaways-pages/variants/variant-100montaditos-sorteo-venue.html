@@ -3,20 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>airZoon — Giveaway Page · Aesthetic Medicine (Sorteo)</title>
+<title>airZoon — Giveaway Page · 100 Montaditos (Sorteo — Venue photo)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=1">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=6">
 <style>
-  /* ---- Giveaway (Sorteo) — Aesthetic Medicine (reskin of 100 Montaditos) ----
-     Same layout, tokens swapped. The hero photo is the prize itself (the
-     facial being applied in the shot IS the raffle prize), same reasoning
-     as the 100 Montaditos file — see its comment for why. */
+  /* ---- Giveaway (Sorteo) — 100 Montaditos, Venue photo variant ----
+     Sibling of variant-100montaditos-sorteo.html, same content and flow.
+     There the hero photo IS the prize (see that file's comment); here the
+     hero goes back to the venue shot every other archetype uses ("real
+     foto del local", per brief), for a client who wants the header to
+     read as their place first — the prize photo moves down into the card
+     instead, right under the description, same .offer-gift-photo
+     component and placement Reserva already uses for its birthday gift. */
   :root{
     --text-color: #232323;
-    --primary-color: #5C3D2E;
+    --primary-color: #CD0A09;
     --headline-color: #1A1A1A;
     --headline-font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     --card-background-color: #FFFFFF;
@@ -24,7 +28,7 @@
     --element-border-radius: 10px;
     --block-padding: 40px;
 
-    --cta-button-bg: #5C3D2E;
+    --cta-button-bg: #CD0A09;
     --cta-button-radius: 10px;
     --cta-button-font-weight: 700;
 
@@ -38,12 +42,14 @@
     --card-pad-top: 132px;
   }
 
-  body{ background: #D5C1AC; }
-  .az-powered-by{ color: rgba(26,26,26,.4); }
+  body{
+    background: #1B1A18 url('../assets/background-100-montaditos.jpg') top center / cover no-repeat fixed;
+  }
+  .az-powered-by{ color: rgba(255,255,255,.4); }
 
   .az-hero-photo{
     height: var(--hero-h);
-    background: url('../assets/gift-aestheticmedicine.jpg') center 30% / cover no-repeat;
+    background: url('../assets/banner-100-montaditos.jpg') 42% 76% / auto 188% no-repeat;
   }
 
   .az-logo-wrap{
@@ -54,7 +60,7 @@
     width:var(--badge-d); height:var(--badge-d); overflow:hidden; padding:0; background:#fff; border:none;
     box-shadow: 0 8px 24px rgba(0,0,0,.18);
   }
-  .az-logo-badge img{ width:100%; height:100%; object-fit:cover; display:block; transform: scale(1.35); }
+  .az-logo-badge img{ width:100%; height:100%; object-fit:cover; display:block; }
 
   .offer-stack{ max-width: 600px; margin: 0 auto; padding: 0 20px 48px; }
   .offer-cta-list{ display:flex; flex-direction:column; gap:10px; }
@@ -74,7 +80,10 @@
       --card-overlap: 40px;
       --card-pad-top: 88px;
     }
-    .az-hero-photo{ background-position: center 25%; }
+    .az-hero-photo{
+      background-position: 25% 25%;
+      background-size: auto 130%;
+    }
   }
 
   @media (max-height: 700px){
@@ -83,6 +92,10 @@
       --badge-d: 76px;
       --card-overlap: 40px;
       --card-pad-top: 44px;
+    }
+    .az-hero-photo{
+      background-position: 30% 20%;
+      background-size: auto 118%;
     }
     .offer-desc{ font-size:13.5px; line-height:1.45; margin-bottom:14px; }
     .offer-countdown{ margin-top:10px; margin-bottom:14px; }
@@ -98,6 +111,20 @@
     .offer-title{ font-size:24px; margin-top:0; margin-bottom:8px; }
   }
   .offer-title .accent{ color: var(--primary-color); }
+
+  .offer-gift-photo{
+    width:100%; aspect-ratio: 16 / 10; object-fit:cover; object-position: center 25%;
+    border-radius: var(--element-border-radius);
+    margin: 18px 0;
+  }
+  /* Placed after the base rule on purpose: a media-query rule earlier in
+     the file loses to a later non-media rule of equal specificity
+     regardless of the media condition — same-specificity ties resolve by
+     source order, not by which one is "more specific" to the viewport. */
+  @media (max-height: 700px){
+    .offer-gift-photo{ aspect-ratio: 16 / 5; margin:8px 0; }
+  }
+
   .offer-desc{ text-align:center; margin-bottom:28px; padding:0 28px; }
   .confirm-title{ text-align:center; color: var(--primary-color); }
   .confirm-desc{ text-align:center; padding:0 28px; }
@@ -144,10 +171,10 @@
     <select id="variant-nav" aria-label="Switch variant">
       <optgroup label="100 Montaditos">
         <option value="variant-100montaditos-sorteo.html">Prize photo</option>
-        <option value="variant-100montaditos-sorteo-venue.html">Venue photo</option>
+        <option value="variant-100montaditos-sorteo-venue.html" selected>Venue photo</option>
       </optgroup>
       <optgroup label="Aesthetic Medicine">
-        <option value="variant-aestheticmedicine-sorteo.html" selected>Prize photo</option>
+        <option value="variant-aestheticmedicine-sorteo.html">Prize photo</option>
         <option value="variant-aestheticmedicine-sorteo-venue.html">Venue photo</option>
       </optgroup>
     </select>
@@ -198,15 +225,16 @@
 
         <div class="az-logo-wrap">
           <div class="az-logo-badge">
-            <img src="../assets/Aesthetic-Medicine-logo.png" alt="Aesthetic Medicine">
+            <img src="../assets/logo-100-montaditos.png" alt="100 Montaditos">
           </div>
         </div>
 
         <!-- ============ "BEFORE" PANEL — enter the giveaway ============ -->
         <div data-panel="before">
 
-          <h2 class="offer-title">Facial premium, <span class="accent">gratis</span></h2>
-          <p class="offer-desc">Participá y podés ganar un facial premium de firma en Aesthetic Medicine.</p>
+          <h2 class="offer-title">Cena para 4, <span class="accent">gratis</span></h2>
+          <p class="offer-desc">Participá y podés ganar una cena completa con bebidas para vos y 3 amigos en 100 Montaditos.</p>
+          <img class="offer-gift-photo" src="../assets/gift-100montaditos.jpg" alt="Cena y bebidas de premio">
 
           <div class="offer-countdown" data-countdown="2026-10-01T23:59:00">
             <p class="offer-countdown-label">Sorteo cierra en</p>
@@ -222,20 +250,20 @@
 
           <form class="giveaway-form" data-giveaway-form novalidate>
             <div class="giveaway-field">
-              <label class="giveaway-field-label" for="gw-name-2">Nombre completo</label>
-              <input class="giveaway-field-input" type="text" id="gw-name-2" name="name" placeholder="Tu nombre" required>
+              <label class="giveaway-field-label" for="gw-name-1">Nombre completo</label>
+              <input class="giveaway-field-input" type="text" id="gw-name-1" name="name" placeholder="Tu nombre" required>
             </div>
             <div class="giveaway-field">
-              <label class="giveaway-field-label" for="gw-whatsapp-2">WhatsApp</label>
-              <input class="giveaway-field-input" type="tel" id="gw-whatsapp-2" name="whatsapp" placeholder="Para avisarte si ganás" required>
+              <label class="giveaway-field-label" for="gw-whatsapp-1">WhatsApp</label>
+              <input class="giveaway-field-input" type="tel" id="gw-whatsapp-1" name="whatsapp" placeholder="Para avisarte si ganás" required>
             </div>
             <div class="giveaway-field">
-              <label class="giveaway-field-label" for="gw-email-2">Email <span class="optional">(opcional)</span></label>
-              <input class="giveaway-field-input" type="email" id="gw-email-2" name="email" placeholder="tu@email.com">
+              <label class="giveaway-field-label" for="gw-email-1">Email <span class="optional">(opcional)</span></label>
+              <input class="giveaway-field-input" type="email" id="gw-email-1" name="email" placeholder="tu@email.com">
             </div>
             <div class="giveaway-field">
-              <label class="giveaway-field-label" for="gw-instagram-2">Instagram <span class="optional">(opcional)</span></label>
-              <input class="giveaway-field-input" type="text" id="gw-instagram-2" name="instagram" placeholder="@tuusuario">
+              <label class="giveaway-field-label" for="gw-instagram-1">Instagram <span class="optional">(opcional)</span></label>
+              <input class="giveaway-field-input" type="text" id="gw-instagram-1" name="instagram" placeholder="@tuusuario">
             </div>
 
             <details class="az-disclosure">
@@ -267,10 +295,10 @@
         <!-- ============ "AFTER" PANEL — already entered ============ -->
         <div data-panel="after">
           <h2 class="confirm-title">¡Ya estás participando!</h2>
-          <p class="confirm-desc">Te avisamos por WhatsApp si ganás. ¡Mucha suerte!</p>
+          <p class="confirm-desc">Te avisamos por WhatsApp si sos el ganador. ¡Mucha suerte!</p>
 
           <div class="offer-cta-list">
-            <a class="cta-button" href="https://wa.me/?text=Estoy%20participando%20en%20el%20sorteo%20de%20un%20facial%20premium%20gratis%20en%20Aesthetic%20Medicine%2C%20particip%C3%A1%20vos%20tambi%C3%A9n" target="_blank" rel="noopener">
+            <a class="cta-button" href="https://wa.me/?text=Estoy%20participando%20en%20el%20sorteo%20de%20una%20cena%20para%204%20gratis%20en%20100%20Montaditos%2C%20particip%C3%A1%20vos%20tambi%C3%A9n" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
               <span class="cta-main">Compartir con amigos<span class="cta-sub">Invitalos a participar</span></span>
             </a>
@@ -281,7 +309,7 @@
         <div data-panel="expired">
           <p class="offer-expired-eyebrow">Sorteo cerrado</p>
           <h2 class="offer-expired-title">Este sorteo ya cerró</h2>
-          <p class="offer-expired-desc">Seguí atento a tu WhatsApp: pronto viene el próximo sorteo de Aesthetic Medicine.</p>
+          <p class="offer-expired-desc">Seguí atento a tu WhatsApp: pronto viene el próximo sorteo de 100 Montaditos.</p>
         </div>
 
       </div>
@@ -323,24 +351,33 @@
         <div class="location-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <div>
-            <p class="location-name">Piantini</p>
-            <a class="location-phone" href="tel:+18094702200">(809) 470-2200</a>
-            <a class="location-link" href="https://maps.google.com/?q=Piantini+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar ›</a>
+            <p class="location-name">Acrópolis Business Mall</p>
+            <a class="location-phone" href="tel:+18099594254">(809) 959-4254</a>
+            <a class="location-link" href="https://maps.google.com/?q=Acropolis+Business+Mall+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar ›</a>
+          </div>
+        </div>
+
+        <div class="location-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <p class="location-name">Galería 360</p>
+            <a class="location-phone" href="tel:+18093638505">(809) 363-8505</a>
+            <a class="location-link" href="https://maps.google.com/?q=Galer%C3%ADa+360+Santo+Domingo" target="_blank" rel="noopener">Cómo llegar ›</a>
           </div>
         </div>
 
         <div class="location-hours-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <p class="location-hours">Lunes a sábado, 9:00 a 19:00</p>
+          <p class="location-hours">Lunes a domingo, 12:00 a 23:00</p>
         </div>
 
         <div class="connect-block">
           <div class="connect-card">
             <div class="connect-card-copy">
-              <p class="connect-card-title">Hablar con Aesthetic Medicine</p>
+              <p class="connect-card-title">Hablar con 100 Montaditos</p>
               <p class="connect-card-desc">Consultas sobre el sorteo.</p>
             </div>
-            <a class="connect-card-btn" href="https://wa.me/18094702200?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20sorteo" target="_blank" rel="noopener">
+            <a class="connect-card-btn" href="https://wa.me/18495550132?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20sorteo" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8z"/></svg>
               <span>Enviar un mensaje</span>
             </a>
