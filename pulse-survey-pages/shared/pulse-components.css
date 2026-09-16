@@ -211,6 +211,11 @@
    in the markup (after the high/low panels) instead of being duplicated —
    gated to "an answer exists" only, not to which branch it was. */
 .splash-page-container[data-survey-step="result"] [data-survey-panel="result-shared"]{ display:block; }
+/* Low branch's primary CTA is always "Enviar por WhatsApp" to the same
+   business number the connect block also opens — showing both duplicates
+   one channel on one screen (same redundancy rule already applied to
+   Oferta's code/whatsapp panels and Corporate's date/whatsapp panels). */
+[data-survey-branch="low"] .az-cell--connect{ display:none; }
 
 /* ---- Coupon + connect: this archetype's own rule for "no promoción" ----
    The brief calls out Encuesta as "sin menú y sin promoción en la misma
