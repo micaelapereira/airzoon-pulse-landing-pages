@@ -188,6 +188,11 @@
    the sole content of its own .az-cell now. */
 .az-cell.az-cell--connect{ margin-top: 16px; }
 .az-cell--connect .connect-block{ margin:0; }
+/* Connect-block being its own card's ONLY content means hiding it with
+   [data-connect="off"] .connect-block{display:none} (above) still leaves
+   an empty, padded card behind — the whole cell needs to go, not just
+   its content. */
+[data-connect="off"] .az-cell--connect{ display:none; }
 
 /* ---- Steps: question / result (high / low branch) ----
    data-survey-step and data-survey-branch both live on
@@ -267,7 +272,7 @@
    copy button still copies clean text with no stray curly quotes. ---- */
 .review-suggested{
   display:flex; flex-direction:column;
-  background: var(--surface-muted); border-radius: var(--element-border-radius);
+  background: #F8F8F8; border-radius: 0;
   border-left: 3px solid var(--primary-color);
   padding:18px 20px; margin:0 0 24px;
 }
