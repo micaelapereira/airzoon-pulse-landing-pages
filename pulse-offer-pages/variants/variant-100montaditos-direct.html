@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../shared/tokens.css?v=6">
+<link rel="stylesheet" href="../shared/tokens.css?v=7">
 <link rel="stylesheet" href="../shared/pulse-components.css?v=28">
 <style>
   /* ---- Minimal Direct — real brand assets (100 Montaditos) ----
@@ -155,7 +155,7 @@
 <body>
 
 <div class="preview-bar">
-  <strong>Preview controls</strong><span>— not part of the design, review only</span>
+  <strong>Preview controls</strong> <button type="button" id="preview-bar-hide" class="preview-bar-hide-btn">Hide</button><span>— not part of the design, review only</span>
   <a class="button-link" href="index.html">All variants</a>
   <div class="spacer"></div>
   <div class="group" role="group" aria-label="Variant">
@@ -208,13 +208,12 @@
     <button data-connect-style="stripe" aria-pressed="false">Stripe</button>
     <button data-connect-style="ghost" aria-pressed="false">Ghost</button>
   </div>
-  <button type="button" id="preview-bar-hide" class="preview-bar-hide-btn">Hide</button>
 </div>
-<button type="button" id="preview-bar-show" class="preview-bar-reveal" hidden>Show controls</button>
 
 <div class="splash-page-container" data-offer-type="whatsapp" data-flow-state="before" data-connect="off" data-coupon="on" data-offer-status="active" data-incentive-style="note" data-connect-style="tint">
 
   <div class="az-cell--controls">
+    <div class="az-controls-left">
     <div class="az-lang-wrap">
       <button class="az-lang" id="lang-trigger" aria-haspopup="listbox" aria-expanded="false">🇪🇸</button>
       <div class="az-lang-dropdown" id="lang-dropdown" role="listbox" hidden>
@@ -223,6 +222,10 @@
         <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇫🇷</span> Français <span class="check">✓</span></button>
         <button class="az-lang-option" role="option" aria-selected="false"><span class="flag">🇩🇪</span> Deutsch <span class="check">✓</span></button>
       </div>
+    </div>
+      <button type="button" id="preview-bar-show" class="preview-bar-reveal" hidden aria-label="Show preview controls">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
     </div>
     <img class="az-logo-mark" src="../assets/airzoon-pin-mark.png" alt="airZoon">
   </div>
