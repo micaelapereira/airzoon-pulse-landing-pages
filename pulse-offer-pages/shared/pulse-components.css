@@ -113,19 +113,15 @@
 }
 
 /* ---- Connect-with-business button ----
-   Where it lives, and why: NOT in the "after claiming" panel — that spot
-   had two real friction problems (found during review, not a visual
-   nitpick):
-   1) For the WhatsApp offer type, claiming ALREADY means opening a chat
-      with the business — offering "Talk to [Business]" again afterward
-      is redundant, the channel is already open.
-   2) For the Code offer type, redemption happens in person (the code is
-      shown in-store) — that person never sees an "after claiming" state
-      on this page, so a block hidden there never gets seen.
-   That's why the block lives INSIDE [data-offer-panel="code"], right
-   after the terms link — the one moment an alternative contact channel
-   is actually needed, and the only one the person will actually see.
-   It's not duplicated for WhatsApp.
+   Where it lives, and why: a sibling of all three flow panels (before/
+   after/expired) in each variant file, placed once right after the
+   "expired" panel — so it renders in every claim state, for both offer
+   types (WhatsApp and Code), gated ONLY by [data-connect]. Originally this
+   lived inside [data-offer-panel="code"] only, to avoid duplicating the
+   WhatsApp channel when the primary CTA already opened one — client
+   feedback (Steve, 2026-09-16) explicitly asked for Connect to always be
+   available regardless of state or offer type, no exceptions, overriding
+   that redundancy-avoidance rule.
    The WhatsApp icon (.wa-icon) uses the real branded green/white
    WhatsApp glyph (see assets/whatsapp-icon.svg), not a currentColor
    outline — client feedback (Steve, 2026-09-16) asked for the
