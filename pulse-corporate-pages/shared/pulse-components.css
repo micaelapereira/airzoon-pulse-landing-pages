@@ -334,14 +334,39 @@
    brief lists "dirección, mapa, horario, redes" as one block, all answers
    to "how do I find/follow this business". Overrides tokens.css's
    .az-cell--social (built for a standalone full-width row) to sit inline
-   here instead: left-aligned, smaller circles, no top padding of its own
-   (the divider above already provides that). ---- */
+   here instead: left-aligned, no top padding of its own (the divider
+   above already provides that).
+   Redesigned from circular icon-only buttons to icon+handle text (client
+   feedback, Steve, 2026-09-16): the handle has to stay visible and
+   mentionable even while not clickable, so it can't be an icon alone —
+   and it must not be a real link until the visitor has used the primary
+   CTA, to avoid sending them off the page before converting.
+   .social-item starts as an <a> with no href — per HTML semantics that's
+   not a real hyperlink (not clickable, not focusable, no pointer cursor),
+   so nothing extra is needed to "disable" it. shared/preview-bar.js adds
+   the href (from data-social-href) once [data-cta-engaged="on"], either
+   because the visitor clicked the CTA or via the preview bar's "Redes"
+   toggle. ---- */
 .location-social-row{
   padding-top:14px; margin-top:14px; border-top: 1px solid var(--border);
 }
-.location-social-row .az-cell--social{ justify-content:flex-start; padding:0; gap:10px; }
-/* Brand accent instead of tokens.css's fixed --text-color (black) — this
-   card is themed per-client everywhere else (coupon, connect, CTA), a
-   black circle here was the one spot still hardcoded to a neutral color. */
-.location-social-row .az-cell--social a{ width:34px; height:34px; background: var(--primary-color); }
-.location-social-row .az-cell--social svg{ width:16px; height:16px; }
+.location-social-row .az-cell--social{ justify-content:flex-start; padding:0; gap:20px; flex-wrap:wrap; }
+/* Scoped under .location-social-row (not bare .social-item) so this beats
+   tokens.css's .az-cell--social a{...} (the circular-button base rule)
+   on specificity — a bare single-class selector loses that fight. */
+.location-social-row .social-item{
+  width:auto; height:auto; border-radius:0; background:none;
+  display:flex; align-items:center; gap:8px;
+  color: var(--text-muted); font-size:13px; font-weight:600;
+  text-decoration:none; cursor:default;
+}
+.location-social-row .social-icon{
+  width:28px; height:28px; border-radius:50%; flex-shrink:0;
+  background: var(--surface-muted); color: var(--text-muted);
+  display:flex; align-items:center; justify-content:center;
+}
+.location-social-row .social-icon svg{ width:14px; height:14px; }
+/* [href] only exists once engaged — real anchor styling kicks in then. */
+.location-social-row .social-item[href]{ color: var(--primary-color); cursor:pointer; }
+.location-social-row .social-item[href] .social-icon{ background: var(--primary-color); color:#fff; }
+.location-social-row .social-item[href]:hover{ text-decoration:underline; }

@@ -72,7 +72,7 @@ Also fixed, no client input: airZoon coupon and connect-with-business block (bot
 5. **Body copy** — 2-3 short paragraphs about what's happening.
 6. **CTA type** — pick ONE per campaign: "Guardar fecha" (opens a Google Calendar event — needs exact date/time/location text) or "Escribir por WhatsApp" (needs the business's WhatsApp number and a pre-filled message). Not both, not a visitor choice.
 7. **Locations** — name, phone, and hours for each one. Repeat for more than one branch.
-8. **Social links ("redes")** — Instagram and/or Facebook URLs.
+8. **Social links ("redes")** — Instagram and/or Facebook URLs. Shown as text (the @handle) until the visitor uses the primary CTA — only then do they become clickable, so no one leaves the page before converting.
 
 Not part of this page (per brief: "sin promoción"): no discount, deal, or claimable offer; no claim flow — this page never changes state, the only thing configurable is the CTA type, chosen once per campaign.
 
@@ -152,6 +152,6 @@ También fijo, sin datos del cliente: cupón airZoon y botón de conexión con e
 5. **Texto** — 2 a 3 párrafos cortos contando de qué se trata.
 6. **Tipo de botón principal** — elegir UNO por campaña: "Guardar fecha" (abre un evento de Google Calendar — necesita fecha/hora/lugar exactos) o "Escribir por WhatsApp" (necesita el número del negocio y un mensaje precargado). No los dos juntos, no es una elección del visitante.
 7. **Ubicaciones** — nombre, teléfono y horario de cada local. Se repite si hay más de una sucursal.
-8. **Redes** — URLs de Instagram y/o Facebook.
+8. **Redes** — URLs de Instagram y/o Facebook. Se muestran como texto (el @usuario) hasta que el visitante usa el CTA principal — recién ahí se vuelven clickeables, para no desviarlo antes de convertir.
 
 No forma parte de esta página (según el brief: "sin promoción"): sin descuento, oferta ni nada canjeable; sin flujo de canje — la página nunca cambia de estado, lo único configurable es el tipo de botón, elegido una vez por campaña.

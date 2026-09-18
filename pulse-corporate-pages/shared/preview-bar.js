@@ -14,7 +14,7 @@
    ========================================================================== */
 
 (function(){
-  var TOGGLE_ATTRS = ["offer-type", "connect", "coupon", "incentive-style", "connect-style"];
+  var TOGGLE_ATTRS = ["offer-type", "connect", "coupon", "cta-engaged", "incentive-style", "connect-style"];
 
   function wireToggleGroup(container, attr){
     var selector = ".preview-bar [data-" + attr + "]";
@@ -88,6 +88,40 @@
     });
   }
 
+  /* Social links stay text-only (no href — not a real link, not clickable,
+     no pointer cursor) until the visitor has used the primary CTA. That
+     CTA opens WhatsApp/Calendar in a new tab, so clicking it doesn't
+     navigate away from this page — it just also flips [data-cta-engaged],
+     which this syncs against. The preview bar's "Redes" toggle sets the
+     same attribute, for reviewing both states without leaving the page. */
+  function syncSocialLinks(engaged){
+    document.querySelectorAll(".social-item[data-social-href]").forEach(function(el){
+      if (engaged) {
+        el.setAttribute("href", el.getAttribute("data-social-href"));
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener");
+      } else {
+        el.removeAttribute("href");
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+      }
+    });
+  }
+
+  function wireSocialLinks(container){
+    if (!container) return;
+    syncSocialLinks(container.getAttribute("data-cta-engaged") === "on");
+    new MutationObserver(function(){
+      syncSocialLinks(container.getAttribute("data-cta-engaged") === "on");
+    }).observe(container, { attributes: true, attributeFilter: ["data-cta-engaged"] });
+
+    document.querySelectorAll("[data-offer-panel] .cta-button").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        container.setAttribute("data-cta-engaged", "on");
+      });
+    });
+  }
+
   function init(){
     var container = document.querySelector(".splash-page-container");
 
@@ -104,6 +138,7 @@
 
     wireCopyButtons("[data-copy-coupon]", "¡Copiado!");
     wireLanguageSwitcher();
+    wireSocialLinks(container);
   }
 
   if (document.readyState === "loading") {

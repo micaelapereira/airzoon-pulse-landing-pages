@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=2">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=4">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=6">
 <style>
   /* ---- Corporativa — 100 Montaditos ----
      Same shell/tokens as the other archetypes. Structural notes:
@@ -171,6 +171,11 @@
     <button data-coupon="off" aria-pressed="false">Off</button>
     <button data-coupon="on" aria-pressed="true">On</button>
   </div>
+  <div class="group" role="group" aria-label="Social links">
+    <span class="group-label">Redes:</span>
+    <button data-cta-engaged="off" aria-pressed="true">Antes</button>
+    <button data-cta-engaged="on" aria-pressed="false">Después</button>
+  </div>
   <div class="group" role="group" aria-label="Coupon style">
     <span class="group-label">Coupon style:</span>
     <button data-incentive-style="note" aria-pressed="true">Note</button>
@@ -178,7 +183,7 @@
   </div>
 </div>
 
-<div class="splash-page-container" data-offer-type="date" data-connect="off" data-coupon="on" data-incentive-style="note" data-connect-style="tint">
+<div class="splash-page-container" data-offer-type="date" data-connect="off" data-coupon="on" data-cta-engaged="off" data-incentive-style="note" data-connect-style="tint">
 
   <div class="az-cell--controls">
     <div class="az-lang-wrap">
@@ -316,11 +321,13 @@
 
         <div class="location-social-row">
           <div class="az-cell--social">
-            <a href="https://instagram.com/100montaditos" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <a class="social-item" data-social-href="https://instagram.com/100montaditos" aria-label="Instagram">
+              <span class="social-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span>
+              <span class="social-handle">@100montaditos</span>
             </a>
-            <a href="https://facebook.com/100montaditos" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <a class="social-item" data-social-href="https://facebook.com/100montaditos" aria-label="Facebook">
+              <span class="social-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+              <span class="social-handle">@100montaditos</span>
             </a>
           </div>
         </div>
@@ -353,7 +360,7 @@
 
 </div>
 
-<script src="../shared/preview-bar.js?v=2"></script>
+<script src="../shared/preview-bar.js?v=3"></script>
 
 </body>
 </html>
