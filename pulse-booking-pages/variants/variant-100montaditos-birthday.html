@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=5">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=32">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=33">
 <style>
   /* ---- Birthday — same shell and tokens as the Offer Page (100
      Montaditos), reused as-is. The difference is content: greeting with
@@ -191,12 +191,17 @@
   </div>
   <div class="group" role="group" aria-label="Coupon">
     <span class="group-label">Coupon:</span>
+    <button data-coupon="off" aria-pressed="false">Off</button>
+    <button data-coupon="on" aria-pressed="true">On</button>
+  </div>
+  <div class="group" role="group" aria-label="Coupon style">
+    <span class="group-label">Coupon style:</span>
     <button data-incentive-style="note" aria-pressed="true">Note</button>
     <button data-incentive-style="duotone" aria-pressed="false">Duotone</button>
   </div>
 </div>
 
-<div class="splash-page-container" data-flow-state="before" data-connect="off" data-offer-status="active" data-incentive-style="note">
+<div class="splash-page-container" data-flow-state="before" data-connect="off" data-coupon="on" data-offer-status="active" data-incentive-style="note">
 
   <div class="az-cell--controls">
     <div class="az-lang-wrap">
@@ -344,7 +349,7 @@
 
 </div>
 
-<script src="../shared/preview-bar.js?v=5"></script>
+<script src="../shared/preview-bar.js?v=6"></script>
 
 </body>
 </html>

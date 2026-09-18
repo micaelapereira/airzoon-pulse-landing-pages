@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../shared/tokens.css?v=4">
-<link rel="stylesheet" href="../shared/pulse-components.css?v=27">
+<link rel="stylesheet" href="../shared/pulse-components.css?v=28">
 <style>
   /* ---- Business intro — Aesthetic Medicine (reskin) ----
      Same layout as Minimal Direct, with the "About us" card below the
@@ -177,6 +177,11 @@
   </div>
   <div class="group" role="group" aria-label="Coupon">
     <span class="group-label">Coupon:</span>
+    <button data-coupon="off" aria-pressed="false">Off</button>
+    <button data-coupon="on" aria-pressed="true">On</button>
+  </div>
+  <div class="group" role="group" aria-label="Coupon style">
+    <span class="group-label">Coupon style:</span>
     <button data-incentive-style="note" aria-pressed="true">Note</button>
     <button data-incentive-style="duotone" aria-pressed="false">Duotone</button>
   </div>
@@ -188,7 +193,7 @@
   </div>
 </div>
 
-<div class="splash-page-container" data-offer-type="whatsapp" data-flow-state="before" data-connect="off" data-offer-status="active" data-incentive-style="note" data-connect-style="tint">
+<div class="splash-page-container" data-offer-type="whatsapp" data-flow-state="before" data-connect="off" data-coupon="on" data-offer-status="active" data-incentive-style="note" data-connect-style="tint">
 
   <div class="az-cell--controls">
     <div class="az-lang-wrap">
@@ -363,7 +368,7 @@
 
 </div>
 
-<script src="../shared/preview-bar.js?v=3"></script>
+<script src="../shared/preview-bar.js?v=4"></script>
 
 </body>
 </html>

@@ -20,6 +20,11 @@
    now both sides stay symmetric no matter what block comes next
    (connect, About us, or the end of the card). ---- */
 .az-cell.az-cell--coupon{ margin-top: 32px; margin-bottom: 32px; }
+/* On/off per campaign (client feedback, Steve, 2026-09-16) — overrides the
+   original brief's "cero personalización por cliente" for this block.
+   Hides the whole cell, not just .az-coupon, so no empty margined box is
+   left behind when off (same pattern as [data-connect="off"]). */
+[data-coupon="off"] .az-cell--coupon{ display:none; }
 
 /* ---- airZoon coupon (uses --primary-color: it's given by the business,
    so it has to feel like part of their brand, not a fixed airZoon red

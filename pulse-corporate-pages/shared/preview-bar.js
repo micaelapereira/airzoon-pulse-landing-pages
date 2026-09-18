@@ -14,7 +14,7 @@
    ========================================================================== */
 
 (function(){
-  var TOGGLE_ATTRS = ["offer-type", "connect", "incentive-style", "connect-style"];
+  var TOGGLE_ATTRS = ["offer-type", "connect", "coupon", "incentive-style", "connect-style"];
 
   function wireToggleGroup(container, attr){
     var selector = ".preview-bar [data-" + attr + "]";

@@ -8,7 +8,7 @@ Information the sales team must collect from the client before building their Co
 - Card background color.
 - Main button style and color.
 - Logo — reused from the client's Spot welcome page.
-- airZoon coupon and connect-with-business block — fixed structure, always visible, no client input needed.
+- airZoon coupon and connect-with-business block — fixed structure, no client input needed (both have a per-campaign on/off toggle now).
 
 ## Specific to this page
 
@@ -37,7 +37,7 @@ Datos que el equipo comercial debe pedirle al cliente antes de armar su Página 
 - Color de fondo de las tarjetas.
 - Estilo y color del botón principal.
 - Logo — se reusa el de la splash page de bienvenida (Spot) del cliente.
-- Cupón airZoon y botón de conexión — estructura fija, siempre visible, sin datos del cliente.
+- Cupón airZoon y botón de conexión — estructura fija, sin datos del cliente (ambos tienen ahora un toggle on/off por campaña).
 
 ## Específico de esta página
 

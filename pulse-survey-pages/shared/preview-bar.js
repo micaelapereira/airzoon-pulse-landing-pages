@@ -12,7 +12,7 @@
    ========================================================================== */
 
 (function(){
-  var TOGGLE_ATTRS = ["survey-step", "survey-branch", "connect", "incentive-style"];
+  var TOGGLE_ATTRS = ["survey-step", "survey-branch", "connect", "coupon", "incentive-style"];
 
   function wireToggleGroup(container, attr){
     var selector = ".preview-bar [data-" + attr + "]";

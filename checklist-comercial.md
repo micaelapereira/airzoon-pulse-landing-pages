@@ -29,7 +29,7 @@ Only for the "Countdown" variant: exact closing time of the offer.
 
 ## 2. Booking Page (`pulse-booking-pages/`) — birthday gift, booked by WhatsApp
 
-Also fixed, no client input: validity — the gift is valid for the whole month by design, not a client choice; airZoon coupon and connect-with-business block — fixed structure (connect on/off is a per-campaign toggle, not client-provided content).
+Also fixed, no client input: validity — the gift is valid for the whole month by design, not a client choice; airZoon coupon and connect-with-business block — fixed structure (both have a per-campaign on/off toggle, not client-provided content).
 
 1. **Header photo** — real photo of the venue. Landscape, well lit, no text overlay.
 2. **The birthday gift** — one short sentence (e.g. "1 montadito per guest + a drink for the birthday person", "a free facial cleansing").
@@ -40,7 +40,7 @@ Also fixed, no client input: validity — the gift is valid for the whole month 
 
 ## 3. Giveaway Page (`pulse-giveaways-pages/`) — raffle entry, prize photo, countdown to close
 
-Also fixed, no client input: airZoon coupon and connect-with-business block — fixed structure.
+Also fixed, no client input: airZoon coupon and connect-with-business block — fixed structure (both have a per-campaign on/off toggle).
 
 1. **The prize** — one short sentence (e.g. "a dinner for 4 with drinks", "a premium signature facial").
 2. **Photo of the prize** — real photo of the specific item or experience (not the venue). Runs full-width at the very top of the page — needs to work as a hero image, not a small product shot.
@@ -52,7 +52,7 @@ Also fixed, no client input: airZoon coupon and connect-with-business block — 
 
 ## 4. Survey Page (`pulse-survey-pages/`) — one-tap rating, branches to review or feedback
 
-Also fixed, no client input: airZoon coupon and connect-with-business block (shown only after answering); the question itself and the 1-5 star scale — fixed across every client, not written by the business.
+Also fixed, no client input: airZoon coupon and connect-with-business block (shown only after answering, both with a per-campaign on/off toggle); the question itself and the 1-5 star scale — fixed across every client, not written by the business.
 
 1. **Header photo** — real photo of the venue, same as the other archetypes.
 2. **Public review link** — the real Google Business or Facebook page review URL (or a place ID). Mockup placeholder is a generic Maps search link; must be swapped before this ships.
@@ -63,7 +63,7 @@ Not part of this page (per brief: "sin menú y sin promoción"): no address/hour
 
 ## 5. Corporate Page (`pulse-corporate-pages/`) — news, launches, events. Save the date or WhatsApp
 
-Also fixed, no client input: airZoon coupon and connect-with-business block.
+Also fixed, no client input: airZoon coupon and connect-with-business block (both have a per-campaign on/off toggle).
 
 1. **Header photo** — real photo of the venue, same as the other archetypes.
 2. **The headline** — the news/launch/event in one short sentence.
@@ -109,7 +109,7 @@ Solo para la variante "Cuenta atrás": hora exacta de cierre de la oferta.
 
 ## 2. Página Reserva (`pulse-booking-pages/`) — regalo de cumpleaños, reserva por WhatsApp
 
-También fijo, sin datos del cliente: vigencia — el regalo vale todo el mes por diseño, no es una elección del cliente; cupón airZoon y botón de conexión — estructura fija (el on/off del connect es un toggle por campaña, no contenido que completa el cliente).
+También fijo, sin datos del cliente: vigencia — el regalo vale todo el mes por diseño, no es una elección del cliente; cupón airZoon y botón de conexión — estructura fija (ambos tienen ahora un toggle on/off por campaña, no es contenido que completa el cliente).
 
 1. **Foto de cabecera** — foto real del local. Horizontal, buena luz, sin texto superpuesto.
 2. **El regalo de cumpleaños** — una frase corta (ej. "1 montadito por invitado + una copa o un trago para el cumpleañero", "una limpieza facial gratis").
@@ -120,7 +120,7 @@ También fijo, sin datos del cliente: vigencia — el regalo vale todo el mes po
 
 ## 3. Página Sorteo (`pulse-giveaways-pages/`) — participación en sorteo, foto del premio, cuenta atrás al cierre
 
-También fijo, sin datos del cliente: cupón airZoon y botón de conexión con el negocio — estructura fija.
+También fijo, sin datos del cliente: cupón airZoon y botón de conexión con el negocio — estructura fija (ambos tienen un toggle on/off por campaña).
 
 1. **El premio** — una frase corta (ej. "una cena para 4 con bebidas", "un facial premium de firma").
 2. **Foto del premio** — foto real del producto o experiencia específica (no del local). Ocupa todo el ancho arriba de todo — tiene que funcionar como imagen de cabecera, no como foto de producto chica.
@@ -132,7 +132,7 @@ También fijo, sin datos del cliente: cupón airZoon y botón de conexión con e
 
 ## 4. Página Encuesta (`pulse-survey-pages/`) — calificación de un toque, ramifica a reseña o comentario
 
-También fijo, sin datos del cliente: cupón airZoon y botón de conexión (aparecen solo después de responder); la pregunta en sí y la escala de 1 a 5 estrellas — fijas para todo cliente, no las escribe el negocio.
+También fijo, sin datos del cliente: cupón airZoon y botón de conexión (aparecen solo después de responder, ambos con un toggle on/off por campaña); la pregunta en sí y la escala de 1 a 5 estrellas — fijas para todo cliente, no las escribe el negocio.
 
 1. **Foto de cabecera** — foto real del local, igual que en el resto de los arquetipos.
 2. **Link de reseña pública** — la URL real de la ficha de Google Business o Facebook (o un place ID). El mockup usa un link genérico de búsqueda en Maps como placeholder; hay que reemplazarlo por el real antes de publicar.
@@ -143,7 +143,7 @@ No forma parte de esta página (según el brief: "sin menú y sin promoción"): 
 
 ## 5. Página Corporativa (`pulse-corporate-pages/`) — novedades, lanzamientos, eventos. Guardar fecha o WhatsApp
 
-También fijo, sin datos del cliente: cupón airZoon y botón de conexión con el negocio.
+También fijo, sin datos del cliente: cupón airZoon y botón de conexión con el negocio (ambos tienen un toggle on/off por campaña).
 
 1. **Foto de cabecera** — foto real del local, igual que en el resto de los arquetipos.
 2. **El titular** — la novedad, lanzamiento o evento en una frase corta.

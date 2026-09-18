@@ -9,7 +9,7 @@ Information the sales team must collect from the client before building their Bo
 - Main button style and color.
 - Logo — reused from the client's Spot welcome page.
 - Validity: the gift is valid for the whole month by design, not a client choice.
-- airZoon coupon and connect-with-business block — fixed structure, no client input needed (connect on/off is a per-campaign toggle, not something the client provides content for).
+- airZoon coupon and connect-with-business block — fixed structure, no client input needed (both have a per-campaign on/off toggle now, not something the client provides content for).
 
 ## Specific to this page
 
@@ -33,7 +33,7 @@ Datos que el equipo comercial debe pedirle al cliente antes de armar su Página 
 - Estilo y color del botón principal.
 - Logo — se reusa el de la splash page de bienvenida (Spot) del cliente.
 - Vigencia: el regalo vale todo el mes por diseño, no es una elección del cliente.
-- Cupón airZoon y botón de conexión — estructura fija, sin datos del cliente (el on/off del connect es un toggle por campaña, no algo que el cliente completa).
+- Cupón airZoon y botón de conexión — estructura fija, sin datos del cliente (ambos tienen ahora un toggle on/off por campaña, no es algo que el cliente completa).
 
 ## Específico de esta página
 
