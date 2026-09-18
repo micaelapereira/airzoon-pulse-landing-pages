@@ -107,6 +107,25 @@
     sync();
   }
 
+  /* Collapse/reveal the whole dev preview bar (client feedback, Steve,
+     2026-09-16) — lets a reviewer see the real design without the bar's
+     chrome, with an easy way back via the small pill it leaves behind. */
+  function wireCollapse(){
+    var bar = document.querySelector(".preview-bar");
+    var hideBtn = document.getElementById("preview-bar-hide");
+    var revealBtn = document.getElementById("preview-bar-show");
+    if (!bar || !hideBtn || !revealBtn) return;
+
+    hideBtn.addEventListener("click", function(){
+      bar.classList.add("is-hidden");
+      revealBtn.hidden = false;
+    });
+    revealBtn.addEventListener("click", function(){
+      bar.classList.remove("is-hidden");
+      revealBtn.hidden = true;
+    });
+  }
+
   function init(){
     var container = document.querySelector(".splash-page-container");
 
@@ -126,6 +145,7 @@
     wireCopyButtons("[data-copy-code]", "¡Código copiado!");
     wireCopyButtons("[data-copy-coupon]", "¡Copiado!");
     wireLanguageSwitcher();
+    wireCollapse();
   }
 
   if (document.readyState === "loading") {

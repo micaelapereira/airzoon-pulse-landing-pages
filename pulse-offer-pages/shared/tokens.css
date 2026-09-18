@@ -92,6 +92,23 @@ img{ max-width:100%; display:block; }
 }
 .preview-bar .spacer{ flex:1; }
 .preview-bar .note{ font-size:11px; color:var(--text-muted); }
+/* Collapse/reveal: Steve's feedback (2026-09-16) — let reviewers hide the
+   whole dev bar to see the real design, with an easy way back. */
+.preview-bar.is-hidden{ display:none; }
+.preview-bar-reveal{
+  /* Bottom-right, not top-right: the page's own airZoon mark sits
+     top-right of the hero on every archetype (position:relative, not
+     fixed, but at the same on-screen spot) — a fixed pill up there
+     covers it. Bottom-right is clear on every archetype (footer credit
+     text is centered, not right-aligned). */
+  position: fixed; bottom:16px; right:16px; z-index:51;
+  display:flex; align-items:center; gap:6px;
+  font-size: 12px; padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background:#fff; color: var(--text-color);
+  cursor:pointer; font-family: var(--font-body);
+  box-shadow: 0 4px 14px rgba(0,0,0,.15);
+}
+.preview-bar-reveal[hidden]{ display:none; }
 
 /* ==========================================================================
    Shared offer-page shell — same skeleton across all 4 variants:
