@@ -126,9 +126,11 @@
    after the terms link — the one moment an alternative contact channel
    is actually needed, and the only one the person will actually see.
    It's not duplicated for WhatsApp.
-   The WhatsApp icon never carries its fixed green in any style — it
-   takes currentColor, so it blends with the accent instead of reading
-   as an imported sticker. 3 treatments via [data-connect-style]:
+   The WhatsApp icon (.wa-icon) uses the real branded green/white
+   WhatsApp glyph (see assets/whatsapp-icon.svg), not a currentColor
+   outline — client feedback (Steve, 2026-09-16) asked for the
+   recognizable brand icon on every WhatsApp-action button, overriding
+   the earlier "blend with the accent" choice. 3 treatments via [data-connect-style]:
    Tint   — horizontal row, outline button, vertical rule next to the text.
    Stripe — stacked and centered, accent stripe down the block's whole
             left edge, filled button.
@@ -157,6 +159,7 @@
   background: var(--primary-color); color:#fff; border: 1.5px solid var(--primary-color);
 }
 .connect-card-btn svg{ width:18px; height:18px; flex-shrink:0; color:currentColor; }
+.connect-card-btn img.wa-icon{ width:18px; height:18px; flex-shrink:0; }
 
 /* ---- Narrow mobile: Tint and Ghost are a row (text + button side by
    side) — on a small screen that squeezes the text against the button
