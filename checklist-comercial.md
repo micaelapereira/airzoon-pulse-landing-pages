@@ -29,7 +29,7 @@ Only for the "Countdown" variant: exact closing time of the offer.
 
 ## 2. Booking Page (`pulse-booking-pages/`) — birthday gift, booked by WhatsApp
 
-Also fixed, no client input: validity — the gift is valid for the whole month by design, not a client choice.
+Also fixed, no client input: validity — the gift is valid for the whole month by design, not a client choice; airZoon coupon and connect-with-business block — fixed structure (connect on/off is a per-campaign toggle, not client-provided content).
 
 1. **Header photo** — real photo of the venue. Landscape, well lit, no text overlay.
 2. **The birthday gift** — one short sentence (e.g. "1 montadito per guest + a drink for the birthday person", "a free facial cleansing").
@@ -109,7 +109,7 @@ Solo para la variante "Cuenta atrás": hora exacta de cierre de la oferta.
 
 ## 2. Página Reserva (`pulse-booking-pages/`) — regalo de cumpleaños, reserva por WhatsApp
 
-También fijo, sin datos del cliente: vigencia — el regalo vale todo el mes por diseño, no es una elección del cliente.
+También fijo, sin datos del cliente: vigencia — el regalo vale todo el mes por diseño, no es una elección del cliente; cupón airZoon y botón de conexión — estructura fija (el on/off del connect es un toggle por campaña, no contenido que completa el cliente).
 
 1. **Foto de cabecera** — foto real del local. Horizontal, buena luz, sin texto superpuesto.
 2. **El regalo de cumpleaños** — una frase corta (ej. "1 montadito por invitado + una copa o un trago para el cumpleañero", "una limpieza facial gratis").
