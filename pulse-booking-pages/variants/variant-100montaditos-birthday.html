@@ -261,23 +261,6 @@
           <p class="offer-expired-desc">Pero seguí atento a tu WhatsApp: te vamos a escribir para tu próximo cumpleaños.</p>
         </div>
 
-        <!-- Connect block: sibling of the three flow panels above (before/
-             after/expired) — technically the same WhatsApp channel as the
-             primary CTA, but the Connect toggle alone controls it in every
-             state, no exceptions (client feedback, Steve, 2026-09-16). -->
-        <div class="connect-block">
-          <div class="connect-card">
-            <div class="connect-card-copy">
-              <p class="connect-card-title">Hablar con 100 Montaditos</p>
-              <p class="connect-card-desc">Consultas sobre tu reserva.</p>
-            </div>
-            <a class="connect-card-btn" href="https://wa.me/18495550132?text=Hola%2C%20tengo%20una%20consulta%20sobre%20mi%20reserva" target="_blank" rel="noopener">
-              <img class="wa-icon" src="../assets/whatsapp-icon.svg" alt="">
-              <span>Enviar un mensaje</span>
-            </a>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -331,6 +314,26 @@
         <div class="location-hours-row">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <p class="location-hours">Lunes a domingo, 12:00 a 23:00</p>
+        </div>
+
+        <!-- Connect block: sits here, after the hours row, not stacked
+             under the offer card's own CTA — a big "Reservar por WhatsApp"
+             button with a second "Enviar un mensaje" WhatsApp button right
+             below it reads as one redundant action repeated (client
+             feedback, Steve, 2026-09-16). The Connect toggle still controls
+             it alone in every state, no exceptions — it just now lives in
+             the closing contact block instead. -->
+        <div class="connect-block">
+          <div class="connect-card">
+            <div class="connect-card-copy">
+              <p class="connect-card-title">Hablar con 100 Montaditos</p>
+              <p class="connect-card-desc">Consultas sobre tu reserva.</p>
+            </div>
+            <a class="connect-card-btn" href="https://wa.me/18495550132?text=Hola%2C%20tengo%20una%20consulta%20sobre%20mi%20reserva" target="_blank" rel="noopener">
+              <img class="wa-icon" src="../assets/whatsapp-icon.svg" alt="">
+              <span>Enviar un mensaje</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
