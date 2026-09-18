@@ -14,8 +14,9 @@
      Montaditos), reused as-is. The difference is content: greeting with
      a name, birthday gift instead of a generic offer, companion mention,
      validity for the whole month. A single action — book by WhatsApp —
-     so there's no code panel and no connect block: that same channel is
-     already covered by the main button. */
+     so there's no code panel. The connect block IS present here despite
+     duplicating that same WhatsApp channel — see the comment next to it
+     for why (client override, Steve, 2026-09-16). */
   :root{
     --text-color: #232323;
     --primary-color: #CD0A09;
@@ -178,6 +179,11 @@
     <button data-flow-state="before" aria-pressed="true">Before booking</button>
     <button data-flow-state="after" aria-pressed="false">After booking</button>
   </div>
+  <div class="group" role="group" aria-label="Connect">
+    <span class="group-label">Connect:</span>
+    <button data-connect="off" aria-pressed="true">Off</button>
+    <button data-connect="on" aria-pressed="false">On</button>
+  </div>
   <div class="group" role="group" aria-label="Validity">
     <span class="group-label">Validity:</span>
     <button data-offer-status="active" aria-pressed="true">Active</button>
@@ -190,7 +196,7 @@
   </div>
 </div>
 
-<div class="splash-page-container" data-flow-state="before" data-offer-status="active" data-incentive-style="note">
+<div class="splash-page-container" data-flow-state="before" data-connect="off" data-offer-status="active" data-incentive-style="note">
 
   <div class="az-cell--controls">
     <div class="az-lang-wrap">
@@ -240,10 +246,23 @@
             <span class="chev">›</span>
           </a>
 
-          <!-- No connect block here: the page's only action is already
-               messaging on WhatsApp. Repeating "talk to the business"
-               would be the same channel duplicated, with no distinct
-               reason. -->
+          <!-- Connect block: technically the same WhatsApp channel as the
+               primary CTA above (client feedback, Steve, 2026-09-16, asked
+               for the Connect on/off toggle available on every archetype,
+               overriding the earlier "don't duplicate the channel" rule
+               applied here). Gated only by [data-connect], off by default. -->
+          <div class="connect-block">
+            <div class="connect-card">
+              <div class="connect-card-copy">
+                <p class="connect-card-title">Hablar con 100 Montaditos</p>
+                <p class="connect-card-desc">Consultas sobre tu reserva.</p>
+              </div>
+              <a class="connect-card-btn" href="https://wa.me/18495550132?text=Hola%2C%20tengo%20una%20consulta%20sobre%20mi%20reserva" target="_blank" rel="noopener">
+                <img class="wa-icon" src="../assets/whatsapp-icon.svg" alt="">
+                <span>Enviar un mensaje</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <!-- ============ "AFTER" PANEL — already booked ============ -->
